@@ -13,13 +13,14 @@ The relevant system is not necessarily a single repository or service. It may sp
 
 ## Workflow
 
-1. Establish the scope and context of the behavior being investigated, including the system boundaries and relevant dependencies.
+1. Establish the scope and context of the behavior being investigated, including the system boundaries, relevant dependencies, and constraints (e.g., financial, computational, memory, time, regulatory, or operational constraints).
 2. Identify every relevant component and boundary needed to understand the current behavior, including other repositories, services, databases, queues, infrastructure, external parties, APIs, and operational processes.
-3. Inspect real artifacts and observe actual behavior across those boundaries. Use the strongest available primary evidence: source code, database state and queries, API requests and responses, logs, commits, configuration, tests, runtime behavior, telemetry, metrics, and other directly observable system data.
+3. Inspect real artifacts and observe actual behavior across those boundaries. Use the strongest available primary evidence: source code, database state and queries, API requests and responses, logs, commits, configuration, tests, runtime behavior, thread/heap dumps, telemetry, metrics, and other directly observable system data.
 4. Cross-check material findings against independent evidence. When evidence conflicts, investigate and resolve the contradiction before treating the finding as established.
 5. Record concise findings and concrete proof for each material conclusion.
 6. Stop only when the relevant current state and system context are understood well enough that a later planning step can determine what needs to change without repeating the investigation.
-7. Before making changes, update your TODOs using the exact format below:
+
+Before starting, update your TODOs using the exact format below:
 
 ```text
 - [•] 🔵 Context: Establishing the relevant system boundaries and dependencies
