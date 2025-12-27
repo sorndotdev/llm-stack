@@ -16,7 +16,8 @@ Tests are the executable specification of the software. Implementation is only j
 3. TDD Red: Write new tests or modify existing tests that compile but fail for the intended reason. Tests may be end-to-end, integration, or unit tests.
 4. TDD Green: Implement the minimum functionality necessary to make the new or modified tests pass. Never weaken, remove, skip, or bypass tests to achieve green.
 5. Verification: Run the full test suite. Because you established a completely green baseline **before any changes were made** in Step 2, treat every failure in this step as caused by your current changes. Do NOT claim or speculate that any failure is pre-existing. If anything fails, return to TDD Red, diagnose and fix the failure, and repeat the TDD Red → TDD Green → Verification cycle until you have confirmed that the full test suite is completely green.
-6. Before making changes, update your TODOs using the exact format below:
+
+Before starting, update your TODOs using the exact format below:
 
 ```text
 - [•] ⚪ Read: TESTING.md
