@@ -35,9 +35,19 @@ Domain modeling MUST be based on the resulting findings rather than assumptions 
 
 ## Context Diagram
 
-A system does not exist in a vacuum. Before modeling the system, we must first map out the context in which it exists: the real-world things, actors, processes, and constraints it represents.
+A system does not exist in a vacuum. Map the ecosystem in which it exists before modeling the thing itself.
 
-Create a context diagram showing the system boundary and its relationships with relevant actors, external systems, inputs, outputs, and constraints.
+Create a context diagram in D2 that:
+
+- Defines the **system boundary**, distinguishing the domain from adjacent and external entities that materially interact with it.
+- Identifies the **centers** that are structurally important to the domain, including relevant actors, external systems, platforms, infrastructure, institutions, resources, and other meaningful participants.
+- Groups centers into meaningful **clusters** that emerge from the domain rather than imposing an arbitrary taxonomy.
+- Maps meaningful **relationships and dependencies** between centers, including direction, strength, and reciprocity where relevant.
+- Identifies important **feedback loops and reinforcing relationships** when they materially shape the system.
+- Reveals **bridges, hubs, bottlenecks, chokepoints, and other emergent structures** that are not apparent from the individual entities alone.
+- Avoids false precision, unnecessary entities, and relationships that are merely associative.
+
+Prefer concrete, recognizable entities where they clarify the structure, but use abstractions where specificity would unnecessarily narrow the model.
 
 ## Domain Model
 
@@ -164,4 +174,4 @@ Scenario: Recalculates dependent cell
 
 ## Final Artifact
 
-Generate a complete domain-modeling artifact for the system being modeled. Include the context diagram, domain model, applied design patterns, and behavioral specification.
+Generate a complete domain-modeling artifact for the system being modeled. Include the context diagram (.d2), domain model, applied design patterns, and behavioral specification.
