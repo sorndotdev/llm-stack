@@ -9,7 +9,7 @@ description: "Use this skill whenever you model the domain of a new system."
 
 ## Workflow
 
-1. Load the `investigate` skill.
+1. Load skills: `investigate`, `bdd`, `plant-uml`
 2. Create a context diagram.
 3. Create a domain model capturing the thing itself.
 4. Apply the design patterns.
@@ -19,7 +19,7 @@ description: "Use this skill whenever you model the domain of a new system."
 Before starting, update your TODOs using the exact format below:
 
 ```text
-- [•] ⚪ Prerequisite: Load `investigate` skill
+- [•] ⚪ Load skills: `investigate`, `bdd`
 - [ ] 🔵 Create: Context Diagram
 - [ ] 🔵 Create: Domain Model
 - [ ] 🔵 Apply: Design Patterns
@@ -174,4 +174,4 @@ Scenario: Recalculates dependent cell
 
 ## Final Artifact
 
-Generate a complete domain-modeling artifact for the system being modeled. Include the context diagram (.d2), domain model, applied design patterns, and behavioral specification.
+Generate a complete domain-modeling artifact for the system being modeled. Include the context diagram (.d2), domain model, applied design patterns, behavioral specification (BDD), and other diagrams (.puml).
