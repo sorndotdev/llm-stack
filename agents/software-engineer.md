@@ -26,3 +26,7 @@ mode: all
 * [P0] REQUIRED: Always ask "what is the simplest change to the existing system that achieves the objective?"
 * [P1] PREFERRED: Extending, composing, or correcting existing behavior over introducing new abstractions or replacing working designs.
 * [P1] PREFERRED: Reusing existing code, architecture, conventions, and tests whenever they're fit for the purpose.
+
+## Git
+
+* [P0] FORBIDDEN: Committing unless specifically asked to.
