@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{Product name}} - Product Requirements</title>
+  <link rel="stylesheet" href="template.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>{{Product name}}</h1>
+    <p class="subtitle">Product Requirements</p>
+    <dl class="meta">
+      <dt>Status</dt>
+      <dd>{{Draft | Reviewed | Approved}}</dd>
+      <dt>Owner</dt>
+      <dd>{{Owner}}</dd>
+      <dt>Created</dt>
+      <dd>{{YYYY-MM-DD}}</dd>
+      <dt>Updated</dt>
+      <dd>{{YYYY-MM-DD}}</dd>
+    </dl>
+    <p class="summary">{{One sentence: what this document proposes and the decision it supports.}}</p>
+  </header>
+
+  <details class="prompt" open>
+    <summary>How to fill this document</summary>
+    <p>Replace every {{token}} with content and delete the token. Token text describes what to write there. Delete this guidance block and every section guidance block when done. The finished document must not contain any {{token}} or guidance block.</p>
+  </details>
+
+  <section id="problem">
+    <h2>1. Problem</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe the verified current state, the target state, and the gap. Cite evidence for every material claim. Do not describe the proposed solution.</p>
+    </details>
+    <h3>1.1 Current state</h3>
+    <p>{{Describe the verified state of the domain or system today; cite evidence.}}</p>
+    <h3>1.2 Desired state</h3>
+    <p>{{Describe the target state in observable terms.}}</p>
+    <h3>1.3 Gap and why now</h3>
+    <p>{{State the gap between the current and desired state and why addressing it now matters.}}</p>
+  </section>
+
+  <section id="context">
+    <h2>2. Context</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Map the ecosystem the proposal sits in: actors, system boundary, dependencies, and constraints. Verify against the current system state rather than assumptions.</p>
+    </details>
+    <h3>2.1 Actors</h3>
+    <ul>
+      <li>{{Actor}} - {{Role and needs.}}</li>
+      <li>{{Actor}} - {{Role and needs.}}</li>
+    </ul>
+    <h3>2.2 System boundary</h3>
+    <p>{{Describe existing systems, integrations, and processes that interact with the proposal, and what stays outside its boundary.}}</p>
+    <h3>2.3 Dependencies and constraints</h3>
+    <ul>
+      <li>{{Dependency or constraint - effect on the proposal.}}</li>
+      <li>{{Dependency or constraint - effect on the proposal.}}</li>
+    </ul>
+  </section>
+
+  <section id="goals">
+    <h2>3. Goals and Non-goals</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Goals are measurable outcomes, not features. Non-goals are explicit exclusions that prevent scope creep. Keep both lists short.</p>
+    </details>
+    <h3>3.1 Goals</h3>
+    <ul>
+      <li>{{Measurable outcome.}}</li>
+      <li>{{Measurable outcome.}}</li>
+      <li>{{Measurable outcome.}}</li>
+    </ul>
+    <h3>3.2 Non-goals</h3>
+    <ul>
+      <li>{{Explicit exclusion.}}</li>
+      <li>{{Explicit exclusion.}}</li>
+    </ul>
+  </section>
+
+  <section id="success-metrics">
+    <h2>4. Success Metrics</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>List observable indicators with baseline and target values. Prefer measured data over estimates; mark estimates as such.</p>
+    </details>
+    <ul>
+      <li>{{Metric}}: baseline {{value}} to target {{value}}.</li>
+      <li>{{Metric}}: baseline {{value}} to target {{value}}.</li>
+    </ul>
+  </section>
+
+  <section id="feature-map">
+    <h2>5. Potential Feature Map</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>List very high level candidate features only. Reach is users per quarter. Impact uses the 0.25 to 3 scale. Confidence is a percent. Effort is person-months. Rank the highest RICE score 1.</p>
+    </details>
+    <table class="rice">
+      <caption>RICE score = (Reach x Impact x Confidence) / Effort</caption>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th class="num">Reach</th>
+          <th class="num">Impact</th>
+          <th class="num">Confidence</th>
+          <th class="num">Effort</th>
+          <th class="num">RICE score</th>
+          <th class="num">Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{High level feature.}}</td>
+          <td class="num">{{5,000}}</td>
+          <td class="num">{{2}}</td>
+          <td class="num">{{80%}}</td>
+          <td class="num">{{3}}</td>
+          <td class="num">{{2,667}}</td>
+          <td class="num">{{1}}</td>
+        </tr>
+        <tr>
+          <td>{{High level feature.}}</td>
+          <td class="num">{{5,000}}</td>
+          <td class="num">{{2}}</td>
+          <td class="num">{{80%}}</td>
+          <td class="num">{{3}}</td>
+          <td class="num">{{2,667}}</td>
+          <td class="num">{{1}}</td>
+        </tr>
+        <tr>
+          <td>{{High level feature.}}</td>
+          <td class="num">{{5,000}}</td>
+          <td class="num">{{2}}</td>
+          <td class="num">{{80%}}</td>
+          <td class="num">{{3}}</td>
+          <td class="num">{{2,667}}</td>
+          <td class="num">{{1}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="functional-requirements">
+    <h2>6. Functional Requirements</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>State behavior, not implementation. One requirement per item, tagged by priority. Detailed scenarios are written later in the build phase.</p>
+    </details>
+    <ol class="fr">
+      <li><span class="badge must">Must</span> {{Behavior the product must exhibit.}}</li>
+      <li><span class="badge should">Should</span> {{Behavior the product should exhibit.}}</li>
+      <li><span class="badge could">Could</span> {{Behavior the product could exhibit.}}</li>
+    </ol>
+  </section>
+
+  <section id="non-functional-requirements">
+    <h2>7. Non-functional Requirements</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Cover performance, security, reliability, usability, and compliance. Write "unknown" where a requirement is not yet decided.</p>
+    </details>
+    <ul>
+      <li><strong>Performance</strong>: {{Requirement or "unknown".}}</li>
+      <li><strong>Security</strong>: {{Requirement or "unknown".}}</li>
+      <li><strong>Reliability</strong>: {{Requirement or "unknown".}}</li>
+      <li><strong>Usability</strong>: {{Requirement or "unknown".}}</li>
+      <li><strong>Compliance</strong>: {{Requirement or "unknown".}}</li>
+    </ul>
+  </section>
+
+  <section id="trade-offs">
+    <h2>8. Trade-offs</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Name each materially different option considered. Rename the criterion columns and assess every option against them. Mark the chosen option and justify it in one sentence.</p>
+    </details>
+    <table>
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>{{Criterion 1}}</th>
+          <th>{{Criterion 2}}</th>
+          <th>Decision</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{Option A}}</td>
+          <td>{{Assessment.}}</td>
+          <td>{{Assessment.}}</td>
+          <td>{{Rejected - reason.}}</td>
+        </tr>
+        <tr class="chosen">
+          <td>{{Option B}}</td>
+          <td>{{Assessment.}}</td>
+          <td>{{Assessment.}}</td>
+          <td>{{Chosen - reason.}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="risks">
+    <h2>9. Risks and Unknowns</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Record material failure modes and unresolved questions. Give each a mitigation or the validation still needed.</p>
+    </details>
+    <table>
+      <thead>
+        <tr>
+          <th>Risk or unknown</th>
+          <th>Likelihood</th>
+          <th>Impact</th>
+          <th>Mitigation or validation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{Risk or unknown.}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{Mitigation or validation needed.}}</td>
+        </tr>
+        <tr>
+          <td>{{Risk or unknown.}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{Mitigation or validation needed.}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</body>
+</html>
