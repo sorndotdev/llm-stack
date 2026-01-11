@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{Change title}} - Technical Requirements</title>
+  <link rel="stylesheet" href="template.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>{{Change title}}</h1>
+    <p class="subtitle">Technical Requirements</p>
+    <dl class="meta">
+      <dt>Status</dt>
+      <dd>{{Draft | Reviewed | Approved}}</dd>
+      <dt>Owner</dt>
+      <dd>{{Owner}}</dd>
+      <dt>Created</dt>
+      <dd>{{YYYY-MM-DD}}</dd>
+      <dt>Updated</dt>
+      <dd>{{YYYY-MM-DD}}</dd>
+    </dl>
+    <p class="summary">{{One sentence: the change and the decision this document supports.}}</p>
+    <p class="note">All sections are frozen after approval.</p>
+  </header>
+
+  <details class="prompt" open>
+    <summary>How to fill this document</summary>
+    <p>Replace every {{token}} with content and delete the token. Token text describes what to write there. Delete this guidance block and every section guidance block when done. The finished document must not contain any {{token}} or guidance block.</p>
+    <p>This document mitigates technology risk, keeps the design adaptable to future business goals without major rework, and reaches a working solution as fast as the problem allows. The Owner is the engineer driving delivery of the change.</p>
+    <p>Embed every diagram twice: the exact source code in a collapsed details block directly above the rendered image.</p>
+    <pre><code>&lt;details class="diagram-source"&gt;
+  &lt;summary&gt;logical_view.puml&lt;/summary&gt;
+  &lt;pre&gt;&lt;code&gt;@startuml
+  ...
+  @enduml&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;
+&lt;figure&gt;
+  &lt;img src="diagrams/logical_view.png" alt="Logical view components and dependencies"&gt;
+  &lt;figcaption&gt;Figure 1. Logical view&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+    <p>Figure numbering runs sequentially across the document. Required-diagram lines name the source files kept in the diagrams folder next to this document.</p>
+  </details>
+
+  <section id="problem-statement">
+    <h2>1. Problem Statement</h2>
+    <h3>1.1 Glossary</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Define only terms and acronyms that risk misinterpretation in this document. Skip terms already well known across the system.</p>
+    </details>
+    <ul>
+      <li>{{Term}} - {{Concise definition.}}</li>
+      <li>{{Term}} - {{Concise definition.}}</li>
+    </ul>
+    <h3>1.2 Context</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe the environment and the problem just enough to understand why it needs solving. Add a context diagram when the ecosystem is not obvious from the text.</p>
+    </details>
+    <p>{{Describe the environment and the problem addressed.}}</p>
+    <p>Required diagram: <a href="diagrams/context_diagram.someext">context_diagram.someext</a>.</p>
+    <h3>1.3 Business constraints</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>List factors that force compromises in the solution: limited human resources, hard deadlines such as regulator-imposed ones, missing licenses that block the optimal design, and similar.</p>
+    </details>
+    <ul>
+      <li>{{Constraint - effect on the solution.}}</li>
+      <li>{{Constraint - effect on the solution.}}</li>
+    </ul>
+  </section>
+
+  <section id="functional-requirements">
+    <h2>2. Functional Requirements</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>State the essential capabilities the system must satisfy from a business or user perspective. List just enough to solve the problem. Remain high level. Do not link to other sources of functional requirements.</p>
+    </details>
+    <ol class="fr">
+      <li><span class="badge must">Must</span> {{Capability the system must satisfy.}}</li>
+      <li><span class="badge should">Should</span> {{Capability the system should satisfy.}}</li>
+      <li><span class="badge could">Could</span> {{Capability the system could satisfy.}}</li>
+    </ol>
+  </section>
+
+  <section id="non-functional-requirements">
+    <h2>3. Non-functional Requirements</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>State the system-design qualities this change must honor. Candidate examples: latency, request volume, consistency and durability trade-offs (CAP, ACID), idempotence, traceability, and security of PII data. Choose the qualities that apply to this change; do not add rows for the sake of listing.</p>
+    </details>
+    <ul>
+      <li><strong>Security</strong>: {{Requirement.}}</li>
+      <li><strong>{{System-design quality}}</strong>: {{Requirement.}}</li>
+      <li><strong>{{System-design quality}}</strong>: {{Requirement.}}</li>
+    </ul>
+  </section>
+
+  <section id="change-risks">
+    <h2>4. Change Risks</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>List risks introduced or amplified by this change, not generic project risks. Examples: a sudden traffic spike on core systems, adoption of new infrastructure technology, vendor lock-in, a new fraud-attack surface, increased system complexity, or reduced availability.</p>
+    </details>
+    <table>
+      <thead>
+        <tr>
+          <th>Risk</th>
+          <th>Likelihood</th>
+          <th>Impact</th>
+          <th>Mitigation or validation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{Risk introduced by the change.}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{Mitigation or validation needed.}}</td>
+        </tr>
+        <tr>
+          <td>{{Risk introduced by the change.}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{High | Medium | Low}}</td>
+          <td>{{Mitigation or validation needed.}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="proposed-solution">
+    <h2>5. Proposed Solution</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Cover the interim and the target solution when the change does not move straight to the target. Stay clear and concise. Do not narrate what a diagram already shows. Include every architecture-relevant aspect of the system.</p>
+    </details>
+    <h3>5.1 Interim and target state</h3>
+    <p>{{Describe the interim solution and the target solution.}}</p>
+    <h3>5.2 Logical view</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe the main components of the system and the relations between them, in line with the system topology. Represent upstream and downstream dependencies so the context and the impact of introduced or changed components are clear.</p>
+    </details>
+    <p>{{Describe the main components and their relations, aligned with the system topology.}}</p>
+    <p>{{List upstream and downstream dependencies.}}</p>
+    <p>Required diagram: <a href="diagrams/logical_view.puml">logical_view.puml</a>.</p>
+    <h3>5.3 Deployment view</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Include this view only when deployment is not obvious for new components, such as reused database clusters, gateways with their own databases, or regional deployment.</p>
+    </details>
+    <p>{{Describe how new and changed components are deployed.}}</p>
+    <p>Required diagram: <a href="diagrams/deployment_view.puml">deployment_view.puml</a>.</p>
+    <h3>5.4 Data model and schema changes</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe entities and models introduced or changed. When the solution changes the database schema, describe those changes specifically: partitioning, database-specific constraints, and similar. Never include PII in diagrams or examples.</p>
+    </details>
+    <p>{{Describe the entities and models introduced or changed.}}</p>
+    <p>{{Describe schema changes: partitioning, database-specific constraints, and similar.}}</p>
+    <p>Required diagram: <a href="diagrams/data_model.puml">data_model.puml</a>.</p>
+    <h3>5.5 Process view</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Use a state diagram for state transitions in the models. Use a sequence diagram, and optionally a flow chart, to capture key scenarios and the interactions between actors and system components. Do not repeat in prose what the diagrams show.</p>
+    </details>
+    <p>{{Describe the key scenarios the diagrams capture.}}</p>
+    <p>Required diagrams: <a href="diagrams/state_diagram.puml">state_diagram.puml</a>, <a href="diagrams/sequence_diagram.puml">sequence_diagram.puml</a>, and <a href="diagrams/flow_chart.puml">flow_chart.puml</a>.</p>
+    <h3>5.6 Money flow view</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe the financial part of the design. Examples only: which system performs settlement, who creates the invoice, direct versus invoiced settlement, and where bookkeeping and ledgering happen. Include what applies and no more.</p>
+    </details>
+    <p>{{Describe the financial part of the design.}}</p>
+    <p>Required diagrams: <a href="diagrams/money_flow.puml">money_flow.puml</a> and <a href="diagrams/bookkeeping.txt">bookkeeping.txt</a>.</p>
+    <h3>5.7 API contracts</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe every endpoint introduced or changed by the solution, internal or external: URL, method, and request and response data. Require the matching changes in the OpenAPI specification and link the spec here. When the solution changes no endpoints, state that explicitly.</p>
+    </details>
+    <ul>
+      <li>{{Endpoint - method - request schema - response schema.}}</li>
+      <li>{{Endpoint - method - request schema - response schema.}}</li>
+    </ul>
+    <p>{{Updated OpenAPI specification file or explicit statement that no endpoints change.}}</p>
+    <h3>5.8 Degraded operation</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe how components behave when the network is down, when backend or third-party services are down, and when internal components are unavailable.</p>
+    </details>
+    <ul>
+      <li><strong>Network down</strong>: {{Behavior.}}</li>
+      <li><strong>Backend or third-party service down</strong>: {{Behavior.}}</li>
+      <li><strong>Internal component unavailable</strong>: {{Behavior.}}</li>
+    </ul>
+  </section>
+
+  <section id="open-questions">
+    <h2>6. Open Questions</h2>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>List unresolved questions that block a decision or need validation. Delete the section content when nothing is open.</p>
+    </details>
+    <ul>
+      <li>{{Open question.}}</li>
+      <li>{{Open question.}}</li>
+    </ul>
+  </section>
+</main>
+</body>
+</html>
