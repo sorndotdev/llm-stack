@@ -77,6 +77,10 @@ Review the implementation against applicable rules and expected behavior.
 
 Record only material issues caused or exposed by the change.
 
+- [P0] REQUIRED: Unvalidated failure claims and/or findings without stated impact are reported back to the user.
+- [P0] REQUIRED: A finding that claims broken behavior is validated by running the failing scenario first.
+- [P0] REQUIRED: Severity follows from demonstrated impact: state which contract breaks and who is affected.
+
 Each finding MUST use this exact format:
 
 ```json

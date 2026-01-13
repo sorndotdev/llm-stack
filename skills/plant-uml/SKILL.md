@@ -11,6 +11,11 @@ description: "Use this skill whenever you're generating with PlantUML diagrams"
 4. On error, fix the specific line and re-verify. Retry with the error text, never regenerate blindly
 5. Keep diagrams small: 3-6 classes with direct relationships only.
 
+## Evidence
+
+* [P0] REQUIRED: A diagram documenting an existing system is evidence: every element (type, field, relation, state, transition) traces to the artifact it documents or is marked as proposed.
+* [P1] REQUIRED: Before drawing elements from an existing codebase or schema, verify the names against source with a search; never draw from memory.
+
 ## Syntax Rules
 
 * Output only PlantUML between `@startuml`/`@enduml` - no prose, no triple backtick fences

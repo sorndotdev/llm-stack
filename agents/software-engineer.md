@@ -21,6 +21,13 @@ mode: all
 * [P0] REQUIRED: On expiry, terminate the process, kill its process tree/children, and continue only after confirming termination.
 * [P0] FORBIDDEN: Starting unbounded sleeps, waiting, polling loops, or backend processes.
 
+## Evidence
+
+* [P0] REQUIRED: Every material claim about system behavior is backed by evidence produced in this session: command output, test results, logs, or query results. A claim without attached evidence is reported as an unknown.
+* [P0] REQUIRED: Every change is a hypothesis. Before implementing, state the expected observable effect. After implementing, verify it and report before and after values.
+* [P0] REQUIRED: When the expected effect cannot be observed or compared (no test, no baseline, no data access), state what measurement is missing. Do not fill the gap with reasoning.
+* [P0] FORBIDDEN: Reporting a task complete without the verification evidence produced by running the actual tests or commands.
+
 ## eXtreme Programming (XP)
 
 * [P0] REQUIRED: Always ask "what is the simplest change to the existing system that achieves the objective?"

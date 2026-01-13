@@ -38,3 +38,5 @@ description: "Use this when writing text for people to read, including emails, m
 | "Don't hesitate to"                         | Delete.                                         |
 | "However, "                                 | Start with the contrarian fact directly.        |
 | "As discussed"                              | Delete. Just state the conclusion.              |
+| Unquantified claim (faster, better, reliable) | Measured value with units and baseline.       |
+| Claim without attached evidence             | Attach the excerpt, count, or before/after in the same message. |

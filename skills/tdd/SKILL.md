@@ -33,6 +33,8 @@ Before starting, update your TODOs using the exact format below:
 * [P0] REQUIRED: Tests MUST be created _or_ modified before implementing the corresponding behavior.
 * [P0] REQUIRED: Red tests MUST specify the behavior that the implementation is required to provide.
 * [P0] ALLOWED: Production-code interfaces, types, or minimal skeletons may be added solely to make tests compile.
+* [P0] REQUIRED: Bug fixes start with a Red test that reproduces the reported symptom. When the test cannot reproduce it, investigate before changing production code.
+* [P1] REQUIRED: Assertions prefer exact expected values. When behavior is inherently variable, use a range and state the reason in your report to the user, never in code comments.
 
 ## TDD Green Phase
 

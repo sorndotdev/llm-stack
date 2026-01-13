@@ -51,6 +51,9 @@ Before starting, update your TODOs using the exact format below:
 - [P1] REQUIRED: Follow behavior across relevant boundaries until the observed behavior can be explained end-to-end.
 - [P1] FORBIDDEN: Treating a plausible implementation path as evidence of actual behavior.
 - [P1] FORBIDDEN: Planning functionality, proposing implementation changes, or modifying production behavior during investigation.
+- [P1] REQUIRED: Prefer measured quantities with units and a time window over qualitative descriptions ("slow", "many", "fails").
+- [P1] REQUIRED: Findings state the environment (production, staging, local) and the moment of observation.
+- [P1] REQUIRED: Statistical claims (latency, error rates, flakiness) state sample size and collection window.
 
 ## Contradictory Evidence
 

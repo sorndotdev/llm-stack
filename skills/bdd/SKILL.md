@@ -45,6 +45,8 @@ BDD specifications describe system behavior through observable outcomes. They ma
 
 * [P0] REQUIRED: Relevant responses, state changes, events, messages, and external side effects are observable in the specification.
 * [P0] REQUIRED: Actor ownership is explicit where multiple actors or systems participate.
+* [P0] REQUIRED: Each `Then` outcome is falsifiable: it names a concrete value or state that would make the scenario fail.
+* [P1] REQUIRED: Behavior that depends on data (counts, ordering, timing) embeds that data in scenario examples instead of prose.
 
 ### Scenarios & Steps
 
