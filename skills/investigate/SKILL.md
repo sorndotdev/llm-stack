@@ -36,6 +36,7 @@ Before starting, update your TODOs using the exact format below:
 - [P0] REQUIRED: Clearly distinguish observed facts from inferences and unknowns.
 - [P1] PREFERRED: Multiple independent sources when they can materially increase confidence in a finding.
 - [P1] PREFERRED: Current runtime behavior and current system state over stale or indirect descriptions.
+- [P1] PREFERRED: When relevant state lives outside the reachable system (external services, vendors, public APIs, market or regulatory context), use web search and fetch primary sources. State the URL and the retrieval date.
 - [P0] FORBIDDEN: Inventing system behavior, implementation details, data, API responses, metrics, configuration, ownership, or other missing evidence.
 
 ## System Context
