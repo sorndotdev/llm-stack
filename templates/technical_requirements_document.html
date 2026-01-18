@@ -195,6 +195,16 @@
       <li><strong>Backend or third-party service down</strong>: {{Behavior.}}</li>
       <li><strong>Internal component unavailable</strong>: {{Behavior.}}</li>
     </ul>
+    <h3>5.9 Rollout and rollback</h3>
+    <details class="prompt" open>
+      <summary>Fill-in guidance</summary>
+      <p>Describe how the change ships and how it is undone. Cover the rollout strategy, its phases, and go/no-go gates. Cover how the previous code release is restored and how schema and data migrations are reversed or kept forward-compatible.</p>
+    </details>
+    <ul>
+      <li><strong>Rollout</strong>: {{Strategy, phases, and go/no-go gates.}}</li>
+      <li><strong>Rollback of code</strong>: {{How the previous release is restored and who decides.}}</li>
+      <li><strong>Rollback of data</strong>: {{How schema and data migration changes are reversed.}}</li>
+    </ul>
   </section>
 
   <section id="open-questions">
