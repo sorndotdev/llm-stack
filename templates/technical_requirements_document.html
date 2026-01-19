@@ -156,7 +156,7 @@
     <h3>5.4 Data model and schema changes</h3>
     <details class="prompt" open>
       <summary>Fill-in guidance</summary>
-      <p>Describe entities and models introduced or changed. When the solution changes the database schema, describe those changes specifically: partitioning, database-specific constraints, and similar. Never include PII in diagrams or examples.</p>
+      <p>Describe entities and models introduced or changed. Describe invariants the data must always satisfy. Identify sensitive or PII fields explicitly, such as credit card details and personal names, and state how the design protects them, for example masking, encryption, or tokenization; use placeholders, not real values, in diagrams and examples. When the solution changes the database schema, describe those changes specifically: partitioning, database-specific constraints, and similar.</p>
     </details>
     <p>{{Describe the entities and models introduced or changed.}}</p>
     <p>{{Describe schema changes: partitioning, database-specific constraints, and similar.}}</p>
@@ -164,7 +164,7 @@
     <h3>5.5 Process view</h3>
     <details class="prompt" open>
       <summary>Fill-in guidance</summary>
-      <p>Use a state diagram for state transitions in the models. Use a sequence diagram, and optionally a flow chart, to capture key scenarios and the interactions between actors and system components. Do not repeat in prose what the diagrams show.</p>
+      <p>Use a state diagram for state transitions in the models. Use a sequence diagram, and optionally a flow chart, to capture key scenarios and the interactions between actors and system components. Capture non-happy paths explicitly: cancellation, rejection, timeout and expiry, partial completion, and compensating actions. Give each transition its pre- and post-conditions. Do not repeat in prose what the diagrams show.</p>
     </details>
     <p>{{Describe the key scenarios the diagrams capture.}}</p>
     <p>Required diagrams: <a href="diagrams/state_diagram.puml">state_diagram.puml</a>, <a href="diagrams/sequence_diagram.puml">sequence_diagram.puml</a>, and <a href="diagrams/flow_chart.puml">flow_chart.puml</a>.</p>
@@ -178,13 +178,21 @@
     <h3>5.7 API contracts</h3>
     <details class="prompt" open>
       <summary>Fill-in guidance</summary>
-      <p>Describe every endpoint introduced or changed by the solution, internal or external: URL, method, and request and response data. Require the matching changes in the OpenAPI specification and link the spec here. When the solution changes no endpoints, state that explicitly.</p>
+      <p>Describe every endpoint introduced or changed by the solution, internal or external, and state which client consumes it: end users, backoffice operators, LLM agents, or other services. Include agent-facing tool APIs and human-in-the-loop approval endpoints. Require the matching changes in the OpenAPI specification and embed the full updated spec below, source in a collapsed details block as shown. Do not link to it. When the solution changes no endpoints, state that explicitly.</p>
+      <pre><code>&lt;details&gt;
+  &lt;summary&gt;openapi.yaml&lt;/summary&gt;
+  &lt;pre&gt;&lt;code&gt;{{Full updated OpenAPI specification.}}&lt;/code&gt;&lt;/pre&gt;
+&lt;/details&gt;</code></pre>
     </details>
     <ul>
       <li>{{Endpoint - method - request schema - response schema.}}</li>
       <li>{{Endpoint - method - request schema - response schema.}}</li>
     </ul>
-    <p>{{Updated OpenAPI specification file or explicit statement that no endpoints change.}}</p>
+    <p>{{Explicit statement that no endpoints change, when applicable.}}</p>
+    <details>
+      <summary>openapi.yaml</summary>
+      <pre><code>{{Full updated OpenAPI specification.}}</code></pre>
+    </details>
     <h3>5.8 Degraded operation</h3>
     <details class="prompt" open>
       <summary>Fill-in guidance</summary>
