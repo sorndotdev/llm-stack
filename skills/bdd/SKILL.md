@@ -39,6 +39,7 @@ BDD specifications describe system behavior through observable outcomes. They ma
 
 * [P0] REQUIRED: Partition behavior into the smallest set of scenarios that distinguish materially different rules or outcomes.
 * [P1] PREFERRED: Each important rule maps to a scenario; each scenario maps to a rule or requirement.
+* [P1] PREFERRED: Cover happy path, state transition, invariant enforcement, idempotent retry, ordering, failure and compensation, replay/backfill, retention/expiry/erasure, and reconciliation.
 * [P0] FORBIDDEN: Creating separate scenarios merely because examples, values, actors, or inputs differ when the governing rule is identical.
 
 ### Observability
