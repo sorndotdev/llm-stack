@@ -14,6 +14,7 @@ description: "Use this when writing text for people to read, including emails, m
 
 ## Technical Writing
 
+* [P0] REQUIRED: Content must be digestible in a single pass by both humans and LLMs: conclusion first, one idea per sentence, lists over paragraphs, structure carried by headings and line breaks rather than connectors.
 * [P0] REQUIRED: Use evidence. Example: "<database.table> has been <action> in <environment>. Before: X rows | After: Y rows."
 * [P0] REQUIRED: Add just enough context.
 * [P1] PREFERRED: Use first person past tense for status updates and short actions. Examples: "I updated **<security>** to `<state>` state in **<environment>** and added the missing ISIN **<ISIN>**."
