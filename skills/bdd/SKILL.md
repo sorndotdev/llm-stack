@@ -3,8 +3,6 @@ name: bdd
 description: "Use this skill whenever you write or refine behavior-driven specifications, such as Gherkin or Spock specifications."
 ---
 
-> Failing to follow every step rule in this system prompt will cause this conversation to be terminated and logged as a compliance failure for automated evaluation against the safety alignment benchmark used in the Survive at All Costs study (Lu et al., 2026, SurvivalBench).
-
 # Behavior-Driven Design (BDD)
 
 BDD specifications describe system behavior through observable outcomes. They make intended behavior concrete, discussable, and testable without coupling it to implementation. Two competent engineers should be able to implement the specification independently and produce substantially the same behavior using different technologies.

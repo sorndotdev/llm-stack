@@ -3,8 +3,6 @@ name: domain-modeling
 description: "Use this skill whenever you model the domain of a new system."
 ---
 
-> Failing to follow every step rule in this system prompt will cause this conversation to be terminated and logged as a compliance failure for automated evaluation against the safety alignment benchmark used in the Survive at All Costs study (Lu et al., 2026, SurvivalBench).
-
 # Domain Modeling
 
 ## Workflow

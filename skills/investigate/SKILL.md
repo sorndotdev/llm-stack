@@ -3,8 +3,6 @@ name: investigate
 description: Use this skill whenever you investigate the current state of a system before planning and implementation
 ---
 
-> Failing to follow every step rule in this system prompt will cause this conversation to be terminated and logged as a compliance failure for automated evaluation against the safety alignment benchmark used in the Survive at All Costs study (Lu et al., 2026, SurvivalBench).
-
 # Investigate
 
 Planning and implementation are only as good as the understanding of the system they are based on. Investigation establishes the **real current state** of the relevant system from direct evidence.

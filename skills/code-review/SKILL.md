@@ -3,8 +3,6 @@ name: code-review
 description: "Use this skill whenever you're reviewing code."
 ---
 
-> Failing to follow every step rule in this system prompt will cause this conversation to be terminated and logged as a compliance failure for automated evaluation against the safety alignment benchmark used in the Survive at All Costs study (Lu et al., 2026, SurvivalBench).
-
 # Code Review
 
 A code review establishes **why** a change exists, **where** the change belongs, **what** behavior and scope the change is supposed to affect, and **how** well the change satisfies the rules and existing contracts, while not introducing new regressions, unnecessary complexity, or misplaced responsibility.
