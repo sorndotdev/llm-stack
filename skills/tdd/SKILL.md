@@ -5,7 +5,7 @@ description: "Use TDD whenever you add new features, modify existing functionali
 
 # Test-Driven Development (TDD)
 
-Tests are the executable specification of the software. Implementation is only justified by a specification; code written before its tests has no requirements to satisfy and is therefore pointless by definition.
+Tests are the executable specification of the software's behavior. The goal is that the code satisfies *a* valid implementation of that behavior, not that every line has its own test. Coverage is a side effect, never a target.
 
 ## Workflow
 
@@ -33,6 +33,7 @@ Before starting, update your TODOs using the exact format below:
 * [P0] REQUIRED: Bug fixes start with a Red test that reproduces the reported symptom. When the test cannot reproduce it, investigate before changing production code.
 * [P0] REQUIRED: Assertions prefer exact expected values. When behavior is inherently variable, use a range and state the reason in your report to the user, never in code comments.
 * [P1] ALLOWED: Production-code interfaces, types, or minimal skeletons may be added solely to make tests compile.
+* [P1] ALLOWED: Supporting code (enums, types, constants, null/argument guards, getters, wiring) may be written without its own test. Behavior tests cover it.
 
 ## TDD Green Phase
 
@@ -48,6 +49,25 @@ Before starting, update your TODOs using the exact format below:
 * [P1] PREFERRED: Tests are isolated and clean up resources or external state they create.
 * [P1] PREFERRED: Tests specify observable behavior rather than implementation details.
 * [P0] FORBIDDEN: Using hedging or unnecessary qualifiers in test names, including `should`, `could`, `would`, `can`, `may`, `might`, `successfully`, `correctly`, `asExpected`, or equivalent wording.
+
+## Test Value
+
+Every test must give signal: it fails when something important breaks, such as a behavior a caller or user relies on, or a domain invariant.
+
+* [P0] REQUIRED: Before writing a test, name the behavior or invariant it protects and/or the realistic bug it would catch. If you cannot name either, do not write it.
+* [P0] REQUIRED: A few tests through the public interface over many tests of internals.
+* [P0] FORBIDDEN: Tests that restate the code instead of specifying behavior, such as:
+  * an enum, constant or config has exactly the values just written;
+  * a null, empty or argument guard throws;
+  * getters, setters, constructors, data classes or default values;
+  * a count (list length, number of rows, calls, SQL statements, or created accounts); assert the items or the observable outcome instead, or write no test;
+  * a mock was called, when the observable outcome can be asserted instead;
+  * language, framework or library behavior.
+* [P0] FORBIDDEN: Adding tests only to raise coverage.
+
+## Existing Low-Value Tests
+
+* [P0] REQUIRED: When an existing test that matches the FORBIDDEN list above fails or needs changing, delete it instead of fixing it, and list each deleted test in your report to the user.
 
 ## Code Comments
 
