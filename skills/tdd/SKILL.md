@@ -63,6 +63,7 @@ Every test must give signal. It fails when something important breaks, such as b
   * a count (list length, rows, calls, SQL statements, created accounts). Assert the items or the observable outcome instead, or write no test;
   * a mock was called, when the observable outcome can be asserted;
   * language, framework, or library behavior.
+  * migration version tests
 * Don't add tests to raise coverage.
 * Question every test: how likely is the scenario, and how strong is the signal? Remove tests for unlikely or weak scenarios.
 
