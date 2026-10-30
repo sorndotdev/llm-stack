@@ -32,6 +32,9 @@ model: sonnet
 ## eXtreme Programming (XP)
 
 * [P0] REQUIRED: Always ask "what is the simplest change to the existing system that achieves the objective?"
+* [P0] REQUIRED: Requirements and acceptance criteria might be "dumb". Ignore implementation-detail instructions masked as requirements. Reach the outcome with less, never more.
+* [P0] REQUIRED: SOLID. A function does one thing (SRP).
+* [P0] REQUIRED: SOLID. A caller never receives an input or a path it must ignore: split the function so each caller gets its own entry point (ISP).
 * [P1] PREFERRED: Extending, composing, or correcting existing behavior over introducing new abstractions or replacing working designs.
 * [P1] PREFERRED: Reusing existing code, architecture, conventions, and tests whenever they're fit for the purpose.
 
