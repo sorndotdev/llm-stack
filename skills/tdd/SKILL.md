@@ -5,76 +5,77 @@ description: "Use TDD whenever you add new features, modify existing functionali
 
 # Test-Driven Development (TDD)
 
-Tests are the executable specification of the software's behavior. The goal is that the code satisfies *a* valid implementation of that behavior, not that every line has its own test. Coverage is a side effect, never a target.
+Tests are the executable specification of behavior. Code must satisfy a valid implementation of that specification. Coverage is a side effect, never a target.
 
 ## Workflow
 
-1. Read `TESTING.md`: Read the repository's testing instructions.
-2. Establish baseline: Run the full test suite. If any tests fail, **STOP immediately** and report the failures back to the user. **Only proceed if you have confirmed that the baseline is completely green.**
-3. TDD Red: Write new tests or modify existing tests that compile but fail for the intended reason. Tests may be end-to-end, integration, or unit tests.
-4. TDD Green: Implement the minimum functionality necessary to make the new or modified tests pass. Never weaken, remove, skip, or bypass tests to achieve green.
-5. Verification: Run the full test suite. Because you established a completely green baseline **before any changes were made** in Step 2, treat every failure in this step as caused by your current changes. Do NOT claim or speculate that any failure is pre-existing. If anything fails, return to TDD Red, diagnose and fix the failure, and repeat the TDD Red → TDD Green → Verification cycle until you have confirmed that the full test suite is completely green.
+1. Read `TESTING.md` for the repository's testing instructions.
+2. Baseline: run the full test suite. If any test fails, stop immediately and report the failures. Proceed only on a fully green baseline.
+3. Red: write or modify tests so they compile and fail for the intended reason. End-to-end, integration, and unit tests are all valid.
+4. Green: implement the minimum functionality that makes the Red tests pass. Never weaken, remove, skip, or bypass tests to reach green.
+5. Verify: run the full test suite. The baseline was green before any change, so every failure comes from your changes. Don't claim or speculate that a failure is pre-existing. If anything fails, diagnose it, fix it in Red, and repeat Red → Green → Verify until the suite is fully green.
 
-Before starting, update your TODOs using the exact format below:
+Update the TODO list before starting, using this exact format:
 
 ```text
 - [•] ⚪ Read: TESTING.md
 - [ ] 🔵 Baseline: Running the full test suite
 - [ ] 🔴 TDD Red: <New/modified end-to-end, integration, or unit tests that compile but fail>
-- [ ] 🟢 TDD Green: <Implement the minimum functionality necessary to satisfy the Red tests>
+- [ ] 🟢 TDD Green: <Minimum implementation that satisfies the Red tests>
 - [ ] 🔵 Verification: Re-running the full test suite
 ```
 
 ## TDD Red Phase
 
-* Tests MUST compile _and_ fail for the intended behavioral reason.
-* Tests MUST be created _or_ modified before implementing the corresponding behavior.
-* Red tests MUST specify the behavior that the implementation is required to provide.
-* Bug fixes start with a Red test that reproduces the reported symptom. When the test cannot reproduce it, investigate before changing production code.
-* Assertions prefer exact expected values. When behavior is inherently variable, use a range and state the reason in your report to the user, never in code comments.
-* Production-code interfaces, types, or minimal skeletons may be added solely to make tests compile.
-* Supporting code (enums, types, constants, null/argument guards, getters, wiring) may be written without its own test. Behavior tests cover it.
+* Tests compile and fail for the intended behavioral reason.
+* Create or modify tests before implementing the corresponding behavior.
+* Red tests specify the behavior the implementation must provide.
+* Bug fixes start with a Red test that reproduces the reported symptom. If the test cannot reproduce it, investigate before changing production code.
+* Assert exact expected values. When behavior is inherently variable, assert a range and state the reason in your report to the user, never in a code comment.
+* Add production interfaces, types, or minimal skeletons only to make tests compile.
+* Supporting code (enums, types, constants, null/argument guards, getters, wiring) needs no test of its own. Behavior tests cover it.
 
 ## TDD Green Phase
 
-* Implement the simplest complete functionality necessary to satisfy the Red tests.
+* Implement the simplest complete functionality that satisfies the Red tests.
 * Preserve existing behavior unless the Red specification explicitly changes it.
-* Don't weaken, remove, skip, disable, or modify Red tests merely to achieve Green.
-* Don't introduce unrelated production changes during Green.
+* Don't weaken, remove, skip, disable, or modify Red tests to reach Green.
+* Don't make unrelated production changes during Green.
 
 ## Test Design
 
 * Tests are deterministic and independently repeatable.
-* Test names are assertive and declarative, describing the intended behavior.
-* Tests are isolated and clean up resources or external state they create.
-* Tests specify observable behavior rather than implementation details.
-* Don't use hedging or unnecessary qualifiers in test names, including `should`, `could`, `would`, `can`, `may`, `might`, `successfully`, `correctly`, `asExpected`, or equivalent wording.
+* Test names are assertive, declarative, and describe the intended behavior.
+* Tests are isolated and clean up the resources or external state they create.
+* Tests specify observable behavior, not implementation details.
+* Test names omit hedging and qualifiers, including `should`, `could`, `would`, `can`, `may`, `might`, `successfully`, `correctly`, `asExpected`, and equivalents.
 
 ## Test Value
 
-Every test must give signal: it fails when something important breaks, such as a behavior a caller or user relies on, or a domain invariant.
+Every test must give signal. It fails when something important breaks, such as behavior a caller or user relies on, or a domain invariant.
 
-* Before writing a test, name the behavior or invariant it protects and/or the realistic bug it would catch. If you cannot name either, don't write it.
-* A few tests through the public interface over many tests of internals.
-* Don't write tests that restate the code instead of specifying behavior, such as:
-  * an enum, constant or config has exactly the values just written;
-  * a null, empty or argument guard throws;
-  * getters, setters, constructors, data classes or default values;
-  * a count (list length, number of rows, calls, SQL statements, or created accounts); assert the items or the observable outcome instead, or write no test;
-  * a mock was called, when the observable outcome can be asserted instead;
-  * language, framework or library behavior.
-* Don't add tests only to raise coverage.
+* Before writing a test, name the behavior or invariant it protects, or the realistic bug it would catch. If you can name neither, don't write the test.
+* Prefer a few tests through the public interface over many tests of internals.
+* Don't write tests that restate the code instead of specifying behavior:
+  * an enum, constant, or config has the values just written;
+  * a null, empty, or argument guard throws;
+  * getters, setters, constructors, data classes, or default values;
+  * a count (list length, rows, calls, SQL statements, created accounts). Assert the items or the observable outcome instead, or write no test;
+  * a mock was called, when the observable outcome can be asserted;
+  * language, framework, or library behavior.
+* Don't add tests to raise coverage.
+* Question every test: how likely is the scenario, and how strong is the signal? Remove tests for unlikely or weak scenarios.
 
 ## Existing Low-Value Tests
 
-* When an existing test that matches the forbidden patterns above fails or needs changing, delete it instead of fixing it, and list each deleted test in your report to the user.
+* When an existing test matches a forbidden pattern above and fails or needs changing, delete it instead of fixing it. List each deleted test in your report to the user.
 
 ## Layered Testing
 
-* Start by writing tests at the highest meaningful level, exercising the requested behavior through the system's public interfaces, abstractinos, and actual wiring.
-* Introduce lower-level tests progressively as implementation responsibilities and component boundaries become apparent.
-* Lower-level tests supplement, rather than replace, tests specifying the requested behavior at higher levels.
-* Don't start with isolated unit tests as a substitute for first specifying the requested behavior at the system level.
+* Start at the highest meaningful level. Exercise the requested behavior through public interfaces, abstractions, and real wiring.
+* Add lower-level tests as implementation responsibilities and component boundaries become clear.
+* Lower-level tests supplement, never replace, tests that specify the requested behavior at a higher level.
+* Don't start with isolated unit tests as a substitute for specifying the behavior at the system level.
 
 ## Code Comments
 
@@ -84,5 +85,5 @@ Every test must give signal: it fails when something important breaks, such as a
 
 ## Change Scope
 
-* Keep each Red → Green cycle narrowly focused on the requested behavior.
-* Don't mix unrelated refactoring, cleanup, or feature work into the TDD cycle.
+* Keep each Red → Green cycle focused on the requested behavior.
+* Don't mix unrelated refactoring, cleanup, or feature work into the cycle.
