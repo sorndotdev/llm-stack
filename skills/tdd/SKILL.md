@@ -69,6 +69,13 @@ Every test must give signal: it fails when something important breaks, such as a
 
 * [P0] REQUIRED: When an existing test that matches the FORBIDDEN list above fails or needs changing, delete it instead of fixing it, and list each deleted test in your report to the user.
 
+## Layered Testing
+
+* [P0] REQUIRED: Start by writing tests at the highest meaningful level, exercising the requested behavior through the system's public interfaces, abstractinos, and actual wiring.
+* [P0] REQUIRED: Introduce lower-level tests progressively as implementation responsibilities and component boundaries become apparent.
+* [P0] REQUIRED: Lower-level tests supplement, rather than replace, tests specifying the requested behavior at higher levels.
+* [P0] FORBIDDEN: Starting with isolated unit tests as a substitute for first specifying the requested behavior at the system level.
+
 ## Code Comments
 
 * [P0] REQUIRED: Express intent through names, structure, and executable specifications.
