@@ -29,49 +29,49 @@ BDD specifications describe system behavior through observable outcomes. They ma
 
 ### Structure
 
-* [P0] REQUIRED: `Given` establishes context; `When` triggers behavior; `Then` describes observable outcomes.
-* [P0] REQUIRED: Scenarios specify behavior, not implementation.
-* [P0] REQUIRED: State transitions, invariants, failure semantics, and relevant temporal semantics are explicit.
+* `Given` establishes context; `When` triggers behavior; `Then` describes observable outcomes.
+* Scenarios specify behavior, not implementation.
+* State transitions, invariants, failure semantics, and relevant temporal semantics are explicit.
 
 ### Coverage
 
-* [P0] REQUIRED: Partition behavior into the smallest set of scenarios that distinguish materially different rules or outcomes.
-* [P1] PREFERRED: Each important rule maps to a scenario; each scenario maps to a rule or requirement.
-* [P1] PREFERRED: Cover happy path, state transition, invariant enforcement, idempotent retry, ordering, failure and compensation, replay/backfill, retention/expiry/erasure, and reconciliation.
-* [P0] FORBIDDEN: Creating separate scenarios merely because examples, values, actors, or inputs differ when the governing rule is identical.
+* Partition behavior into the smallest set of scenarios that distinguish materially different rules or outcomes.
+* Each important rule maps to a scenario; each scenario maps to a rule or requirement.
+* Cover happy path, state transition, invariant enforcement, idempotent retry, ordering, failure and compensation, replay/backfill, retention/expiry/erasure, and reconciliation.
+* Don't create separate scenarios merely because examples, values, actors, or inputs differ when the governing rule is identical.
 
 ### Observability
 
-* [P0] REQUIRED: Relevant responses, state changes, events, messages, and external side effects are observable in the specification.
-* [P0] REQUIRED: Actor ownership is explicit where multiple actors or systems participate.
-* [P0] REQUIRED: Each `Then` outcome is falsifiable: it names a concrete value or state that would make the scenario fail.
-* [P1] REQUIRED: Behavior that depends on data (counts, ordering, timing) embeds that data in scenario examples instead of prose.
+* Relevant responses, state changes, events, messages, and external side effects are observable in the specification.
+* Actor ownership is explicit where multiple actors or systems participate.
+* Each `Then` outcome is falsifiable: it names a concrete value or state that would make the scenario fail.
+* Behavior that depends on data (counts, ordering, timing) embeds that data in scenario examples instead of prose.
 
 ### Scenarios & Steps
 
-* [P0] REQUIRED: Scenarios are independently executable.
-* [P0] REQUIRED: Steps represent distinct concepts and are composable.
-* [P0] REQUIRED: Existing steps are reused when semantics match.
-* [P1] PREFERRED: Repeated concepts are generalized into parameterized steps.
-* [P0] FORBIDDEN: Duplicate behavior across steps or scenarios.
+* Scenarios are independently executable.
+* Steps represent distinct concepts and are composable.
+* Existing steps are reused when semantics match.
+* Repeated concepts are generalized into parameterized steps.
+* Don't duplicate behavior across steps or scenarios.
 
 ### Quality
 
-* [P0] REQUIRED: Scenarios are mutually consistent.
-* [P0] REQUIRED: Important forbidden behavior is explicit.
-* [P0] FORBIDDEN: Vague assertions such as "works", "correctly", "properly", or "as expected".
-* [P0] FORBIDDEN: Implementation details in scenarios.
+* Scenarios are mutually consistent.
+* Important forbidden behavior is explicit.
+* Don't use vague assertions such as "works", "correctly", "properly", or "as expected".
+* Don't include implementation details in scenarios.
 
 ### Concision
 
-* [P0] REQUIRED: Minimize specification text without losing semantic precision.
-* [P0] REQUIRED: State each rule once at its highest useful level of abstraction.
-* [P0] FORBIDDEN: Explanatory prose that does not constrain behavior.
-* [P0] FORBIDDEN: Restating a rule in multiple forms.
-* [P0] FORBIDDEN: Examples that add no behavioral distinction.
-* [P0] FORBIDDEN: Narrating obvious implications of a requirement.
-* [P0] FORBIDDEN: Enumerating instances when a parameterized rule is equivalent.
-* [P0] FORBIDDEN: Adding rationale, commentary, or interpretation to scenarios.
+* Minimize specification text without losing semantic precision.
+* State each rule once at its highest useful level of abstraction.
+* Don't add explanatory prose that does not constrain behavior.
+* Don't restate a rule in multiple forms.
+* Don't add examples that add no behavioral distinction.
+* Don't narrate obvious implications of a requirement.
+* Don't enumerate instances when a parameterized rule is equivalent.
+* Don't add rationale, commentary, or interpretation to scenarios.
 
 ## File Organization
 

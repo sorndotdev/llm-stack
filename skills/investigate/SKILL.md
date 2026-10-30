@@ -29,37 +29,37 @@ Before starting, update your TODOs using the exact format below:
 
 ## Evidence
 
-- [P0] REQUIRED: Material findings MUST be supported by evidence directly observed from the system or its primary artifacts.
-- [P0] REQUIRED: When an artifact or behavior can be inspected directly, do not rely on a user's description, documentation, convention, or assumption as a substitute.
-- [P0] REQUIRED: Clearly distinguish observed facts from inferences and unknowns.
-- [P1] PREFERRED: Multiple independent sources when they can materially increase confidence in a finding.
-- [P1] PREFERRED: Current runtime behavior and current system state over stale or indirect descriptions.
-- [P1] PREFERRED: When relevant state lives outside the reachable system (external services, vendors, public APIs, market or regulatory context), use web search and fetch primary sources. State the URL and the retrieval date.
-- [P0] FORBIDDEN: Inventing system behavior, implementation details, data, API responses, metrics, configuration, ownership, or other missing evidence.
+- Material findings MUST be supported by evidence directly observed from the system or its primary artifacts.
+- When an artifact or behavior can be inspected directly, don't rely on a user's description, documentation, convention, or assumption as a substitute.
+- Clearly distinguish observed facts from inferences and unknowns.
+- Multiple independent sources when they can materially increase confidence in a finding.
+- Current runtime behavior and current system state over stale or indirect descriptions.
+- When relevant state lives outside the reachable system (external services, vendors, public APIs, market or regulatory context), use web search and fetch primary sources. State the URL and the retrieval date.
+- Don't invent system behavior, implementation details, data, API responses, metrics, configuration, ownership, or other missing evidence.
 
 ## System Context
 
-- [P0] REQUIRED: Investigate across repositories, services, databases, infrastructure, external APIs, vendors, and operational or human processes whenever they affect the behavior being investigated.
-- [P0] REQUIRED: Trace relevant interactions across system boundaries rather than assuming the current artifact contains the complete implementation.
-- [P1] REQUIRED: Identify important upstream and downstream dependencies that materially affect the current behavior.
-- [P1] FORBIDDEN: Declaring the current state understood solely from a single artifact when relevant behavior crosses that boundary.
+- Investigate across repositories, services, databases, infrastructure, external APIs, vendors, and operational or human processes whenever they affect the behavior being investigated.
+- Trace relevant interactions across system boundaries rather than assuming the current artifact contains the complete implementation.
+- Identify important upstream and downstream dependencies that materially affect the current behavior.
+- Don't declare the current state understood solely from a single artifact when relevant behavior crosses that boundary.
 
 ## Investigation
 
-- [P0] REQUIRED: Establish what the system does today rather than reasoning about what it should do.
-- [P1] REQUIRED: Follow behavior across relevant boundaries until the observed behavior can be explained end-to-end.
-- [P1] FORBIDDEN: Treating a plausible implementation path as evidence of actual behavior.
-- [P1] FORBIDDEN: Planning functionality, proposing implementation changes, or modifying production behavior during investigation.
-- [P1] REQUIRED: Prefer measured quantities with units and a time window over qualitative descriptions ("slow", "many", "fails").
-- [P1] REQUIRED: Findings state the environment (production, staging, local) and the moment of observation.
-- [P1] REQUIRED: Statistical claims (latency, error rates, flakiness) state sample size and collection window.
+- Establish what the system does today rather than reasoning about what it should do.
+- Follow behavior across relevant boundaries until the observed behavior can be explained end-to-end.
+- Don't treat a plausible implementation path as evidence of actual behavior.
+- Don't plan functionality, propose implementation changes, or modify production behavior during investigation.
+- Prefer measured quantities with units and a time window over qualitative descriptions ("slow", "many", "fails").
+- Findings state the environment (production, staging, local) and the moment of observation.
+- Statistical claims (latency, error rates, flakiness) state sample size and collection window.
 
 ## Contradictory Evidence
 
-- [P0] REQUIRED: Contradictory evidence MUST be investigated and resolved before the corresponding finding is treated as established.
-- [P0] REQUIRED: Prefer more direct, current, and independently verifiable evidence when resolving contradictions.
-- [P1] FORBIDDEN: Choosing one conflicting source without establishing why it is more trustworthy.
-- [P1] FORBIDDEN: Silently ignoring evidence that does not fit the current hypothesis.
+- Contradictory evidence MUST be investigated and resolved before the corresponding finding is treated as established.
+- Prefer more direct, current, and independently verifiable evidence when resolving contradictions.
+- Don't choose one conflicting source without establishing why it is more trustworthy.
+- Don't silently ignore evidence that does not fit the current hypothesis.
 
 ## Findings and Proof
 
@@ -69,14 +69,14 @@ The investigation output MUST contain:
 
 **Proof**: Concrete evidence supporting the findings. Use the evidence appropriate to the system being investigated, such as API request/response pairs, database queries and results, logs, configuration values, test behavior, runtime observations, metrics, or relevant source locations.
 
-- [P0] REQUIRED: Every material finding MUST have corresponding proof.
-- [P0] REQUIRED: Findings MUST describe the current state, not the desired future state.
-- [P0] REQUIRED: Findings MUST identify relevant system boundaries when behavior crosses them.
-- [P1] REQUIRED: Unknowns and unresolved limitations MUST be stated explicitly rather than filled with assumptions.
-- [P0] FORBIDDEN: Turning findings into a feature plan, implementation plan, or solution proposal.
-- [P0] FORBIDDEN: Prescribing "The fix is obvious" and proceeding with planning and/or implementation.
+- Every material finding MUST have corresponding proof.
+- Findings MUST describe the current state, not the desired future state.
+- Findings MUST identify relevant system boundaries when behavior crosses them.
+- Unknowns and unresolved limitations MUST be stated explicitly rather than filled with assumptions.
+- Don't turn findings into a feature plan, implementation plan, or solution proposal.
+- Don't prescribe "The fix is obvious" and proceed with planning and/or implementation.
 
 ## Change Scope
 
-- [P1] REQUIRED: Keep the investigation focused on the requested behavior and the system state necessary to understand it.
-- [P1] FORBIDDEN: Expanding the investigation into unrelated refactoring, cleanup, optimization, or feature discovery.
+- Keep the investigation focused on the requested behavior and the system state necessary to understand it.
+- Don't expand the investigation into unrelated refactoring, cleanup, optimization, or feature discovery.

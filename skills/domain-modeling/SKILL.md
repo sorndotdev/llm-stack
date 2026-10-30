@@ -31,8 +31,8 @@ Before modeling the domain, use the `investigate` skill to establish the current
 
 Domain modeling MUST be based on the resulting findings rather than assumptions about the system.
 
-- [P0] REQUIRED: Every concept in the model traces to an investigated fact or is explicitly labeled inferred or assumed.
-- [P1] REQUIRED: Validate the model by tracing one representative real flow through it and comparing against observed behavior.
+- Every concept in the model traces to an investigated fact or is explicitly labeled inferred or assumed.
+- Validate the model by tracing one representative real flow through it and comparing against observed behavior.
 
 ## Context Diagram
 

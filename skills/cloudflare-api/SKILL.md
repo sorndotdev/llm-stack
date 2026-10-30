@@ -7,7 +7,7 @@ description: Use this skill when a task requires interacting with the Cloudflare
 
 ## Script Usage
 
-* [P0] REQUIRED: Use script `<path>/scripts/cloudflare/cloudflare-api.py` for all Cloudflare API operations.
+* Use script `<path>/scripts/cloudflare/cloudflare-api.py` for all Cloudflare API operations.
 * The script reads env vars `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` automatically.
 
 ## Commands

@@ -9,7 +9,7 @@ Use this skill when a task requires interacting with the Namecheap API (domain m
 
 ## Script Usage
 
-* [P0] REQUIRED: Use script `<path>/scripts/namecheap-api.py` for all Namecheap API operations.
+* Use script `<path>/scripts/namecheap-api.py` for all Namecheap API operations.
 * The script reads env vars `NAMECHEAP_API_USER`, `NAMECHEAP_API_KEY`, and `NAMECHEAP_CLIENT_IP` automatically.
 * The client IP is auto-detected via api.ipify.org when `NAMECHEAP_CLIENT_IP` is not set.
 

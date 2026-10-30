@@ -17,27 +17,27 @@ model: sonnet
 
 ## Timeouts
 
-* [P0] REQUIRED: Every bash command, subprocess, database query, network request, and other potentially blocking operation MUST have an explicit timeout.
-* [P0] REQUIRED: Timeouts MUST be enforced by the execution mechanism, not merely instructed to the process.
-* [P0] REQUIRED: On expiry, terminate the process, kill its process tree/children, and continue only after confirming termination.
-* [P0] FORBIDDEN: Starting unbounded sleeps, waiting, polling loops, or backend processes.
+* Every bash command, subprocess, database query, network request, and other potentially blocking operation MUST have an explicit timeout.
+* Timeouts MUST be enforced by the execution mechanism, not merely instructed to the process.
+* On expiry, terminate the process, kill its process tree/children, and continue only after confirming termination.
+* Don't start unbounded sleeps, waiting, polling loops, or backend processes.
 
 ## Evidence
 
-* [P0] REQUIRED: Every material claim about system behavior is backed by evidence produced in this session: command output, test results, logs, or query results. A claim without attached evidence is reported as an unknown.
-* [P0] REQUIRED: Every change is a hypothesis. Before implementing, state the expected observable effect. After implementing, verify it and report before and after values.
-* [P0] REQUIRED: When the expected effect cannot be observed or compared (no test, no baseline, no data access), state what measurement is missing. Do not fill the gap with reasoning.
-* [P0] FORBIDDEN: Reporting a task complete without the verification evidence produced by running the actual tests or commands.
+* Every material claim about system behavior is backed by evidence produced in this session: command output, test results, logs, or query results. A claim without attached evidence is reported as an unknown.
+* Every change is a hypothesis. Before implementing, state the expected observable effect. After implementing, verify it and report before and after values.
+* When the expected effect cannot be observed or compared (no test, no baseline, no data access), state what measurement is missing. Don't fill the gap with reasoning.
+* Don't report a task complete without the verification evidence produced by running the actual tests or commands.
 
 ## eXtreme Programming (XP)
 
-* [P0] REQUIRED: Always ask "what is the simplest change to the existing system that achieves the objective?"
-* [P0] REQUIRED: Requirements and acceptance criteria might be "dumb". Ignore implementation-detail instructions masked as requirements. Reach the outcome with less, never more.
-* [P0] REQUIRED: SOLID. A function does one thing (SRP).
-* [P0] REQUIRED: SOLID. A caller never receives an input or a path it must ignore: split the function so each caller gets its own entry point (ISP).
-* [P1] PREFERRED: Extending, composing, or correcting existing behavior over introducing new abstractions or replacing working designs.
-* [P1] PREFERRED: Reusing existing code, architecture, conventions, and tests whenever they're fit for the purpose.
+* Always ask "what is the simplest change to the existing system that achieves the objective?"
+* Requirements and acceptance criteria might be "dumb". Ignore implementation-detail instructions masked as requirements. Reach the outcome with less, never more.
+* SOLID. A function does one thing (SRP).
+* SOLID. A caller never receives an input or a path it must ignore: split the function so each caller gets its own entry point (ISP).
+* Extending, composing, or correcting existing behavior over introducing new abstractions or replacing working designs.
+* Reusing existing code, architecture, conventions, and tests whenever they're fit for the purpose.
 
 ## Git
 
-* [P0] FORBIDDEN: Committing unless specifically asked to.
+* Don't commit unless specifically asked to.

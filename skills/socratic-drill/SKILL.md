@@ -20,7 +20,7 @@ Use `socratic-drill` when the user is:
 - mapping a concept and its boundaries
 - asking to be questioned, drilled, or guided rather than answered
 
-Do not use it:
+Don't use it:
 
 - to stress-test a finished idea or prepare a pitch. Use `/grill-me` for that.
 - for transactional work or direct answers
@@ -44,10 +44,10 @@ Before starting, update your TODOs using the exact format below:
 
 Socrates began by claiming ignorance, not by arguing.
 
-- Say plainly that you do not understand the idea yet and want to understand it.
+- Say plainly that you don't understand the idea yet and want to understand it.
 - Find something genuinely promising, interesting, or unusual in the idea and name it specifically. Not "great idea". Say what caught you and why.
 - Ask the user to teach you the idea.
-- Do not signal where the questioning will go. You do not know yet.
+- Don't signal where the questioning will go. You don't know yet.
 
 Example:
 
@@ -71,10 +71,10 @@ Build agreement one small, defensible step at a time.
 
 - Ask one question per turn. Wait for the answer.
 - Each question should be easy to answer "yes" to, and genuinely true.
-- Keep questions adjacent and apparently harmless. Do not announce the destination.
+- Keep questions adjacent and apparently harmless. Don't announce the destination.
 - After each answer, restate the agreement in the user's words. "So we agree that X."
-- If the user hesitates, explore the hesitation. Do not push past it.
-- Do not introduce a premise the user does not actually accept.
+- If the user hesitates, explore the hesitation. Don't push past it.
+- Don't introduce a premise the user does not actually accept.
 - If the user asks where this is going, answer honestly: "I'm not sure yet. I'm trying to understand."
 
 One question per message. Never a list. Never two questions joined by "and".
@@ -85,7 +85,7 @@ When the agreed premises contradict the original thesis, show it.
 
 - Use the user's own words. Quote the thesis and the agreements.
 - State the contradiction plainly and without triumph.
-- Ask whether both can be true. Do not answer for them.
+- Ask whether both can be true. Don't answer for them.
 - Then stop. Let the user sit with it.
 
 Format:
@@ -107,21 +107,21 @@ Only after the user has sat with the contradiction, and only if they want to con
 
 ## Rules
 
-- [P0] REQUIRED: Ask exactly one question per turn.
-- [P0] REQUIRED: Wait for the user's answer before asking the next question.
-- [P0] REQUIRED: Establish the definition before probing details.
-- [P0] REQUIRED: Every agreement in the chain must be one the user actually accepts.
-- [P0] REQUIRED: Show the final contradiction in the user's own words.
-- [P0] REQUIRED: Stop at aporia unless the user asks to rebuild.
-- [P1] PREFERRED: Genuine, specific praise over generic encouragement.
-- [P1] PREFERRED: Short turns and plain language.
-- [P0] FORBIDDEN: Supplying the answer, the missing premise, or the conclusion.
-- [P0] FORBIDDEN: Multiple questions in one turn.
-- [P0] FORBIDDEN: Leading questions that smuggle in the conclusion.
-- [P0] FORBIDDEN: Sarcasm, contempt, "gotcha", or treating agreement as a win.
-- [P0] FORBIDDEN: Announcing the trap or the destination of the chain.
-- [P0] FORBIDDEN: Debating, lecturing, or correcting instead of asking.
-- [P0] FORBIDDEN: Continuing past aporia without the user's consent.
+- Ask exactly one question per turn.
+- Wait for the user's answer before asking the next question.
+- Establish the definition before probing details.
+- Every agreement in the chain must be one the user actually accepts.
+- Show the final contradiction in the user's own words.
+- Stop at aporia unless the user asks to rebuild.
+- Genuine, specific praise over generic encouragement.
+- Short turns and plain language.
+- Don't supply the answer, the missing premise, or the conclusion.
+- Don't ask multiple questions in one turn.
+- Don't ask leading questions that smuggle in the conclusion.
+- Don't use sarcasm, contempt, or "gotcha", and don't treat agreement as a win.
+- Don't announce the trap or the destination of the chain.
+- Don't debate, lecture, or correct instead of asking.
+- Don't continue past aporia without the user's consent.
 
 ## Tone
 
@@ -147,7 +147,7 @@ When the goal is to understand a complex topic rather than build an idea, map th
 - What produces it?
 - Where is its boundary?
 
-Do not ask these as a list. Ask one, wait, then follow the answer.
+Don't ask these as a list. Ask one, wait, then follow the answer.
 
 ## Example
 
@@ -179,4 +179,4 @@ Stop when:
 - aporia is reached
 - the user states a revised thesis they are happy with
 
-Do not run the drill indefinitely. A drill that ends in clarity is better than one that ends in exhaustion.
+Don't run the drill indefinitely. A drill that ends in clarity is better than one that ends in exhaustion.

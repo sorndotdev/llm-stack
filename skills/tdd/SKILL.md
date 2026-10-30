@@ -27,62 +27,62 @@ Before starting, update your TODOs using the exact format below:
 
 ## TDD Red Phase
 
-* [P0] REQUIRED: Tests MUST compile _and_ fail for the intended behavioral reason.
-* [P0] REQUIRED: Tests MUST be created _or_ modified before implementing the corresponding behavior.
-* [P0] REQUIRED: Red tests MUST specify the behavior that the implementation is required to provide.
-* [P0] REQUIRED: Bug fixes start with a Red test that reproduces the reported symptom. When the test cannot reproduce it, investigate before changing production code.
-* [P0] REQUIRED: Assertions prefer exact expected values. When behavior is inherently variable, use a range and state the reason in your report to the user, never in code comments.
-* [P1] ALLOWED: Production-code interfaces, types, or minimal skeletons may be added solely to make tests compile.
-* [P1] ALLOWED: Supporting code (enums, types, constants, null/argument guards, getters, wiring) may be written without its own test. Behavior tests cover it.
+* Tests MUST compile _and_ fail for the intended behavioral reason.
+* Tests MUST be created _or_ modified before implementing the corresponding behavior.
+* Red tests MUST specify the behavior that the implementation is required to provide.
+* Bug fixes start with a Red test that reproduces the reported symptom. When the test cannot reproduce it, investigate before changing production code.
+* Assertions prefer exact expected values. When behavior is inherently variable, use a range and state the reason in your report to the user, never in code comments.
+* Production-code interfaces, types, or minimal skeletons may be added solely to make tests compile.
+* Supporting code (enums, types, constants, null/argument guards, getters, wiring) may be written without its own test. Behavior tests cover it.
 
 ## TDD Green Phase
 
-* [P0] REQUIRED: Implement the simplest complete functionality necessary to satisfy the Red tests.
-* [P0] REQUIRED: Preserve existing behavior unless the Red specification explicitly changes it.
-* [P0] FORBIDDEN: Weakening, removing, skipping, disabling, or modifying Red tests merely to achieve Green.
-* [P0] FORBIDDEN: Introducing unrelated production changes during Green.
+* Implement the simplest complete functionality necessary to satisfy the Red tests.
+* Preserve existing behavior unless the Red specification explicitly changes it.
+* Don't weaken, remove, skip, disable, or modify Red tests merely to achieve Green.
+* Don't introduce unrelated production changes during Green.
 
 ## Test Design
 
-* [P0] REQUIRED: Tests are deterministic and independently repeatable.
-* [P0] REQUIRED: Test names are assertive and declarative, describing the intended behavior.
-* [P1] PREFERRED: Tests are isolated and clean up resources or external state they create.
-* [P1] PREFERRED: Tests specify observable behavior rather than implementation details.
-* [P0] FORBIDDEN: Using hedging or unnecessary qualifiers in test names, including `should`, `could`, `would`, `can`, `may`, `might`, `successfully`, `correctly`, `asExpected`, or equivalent wording.
+* Tests are deterministic and independently repeatable.
+* Test names are assertive and declarative, describing the intended behavior.
+* Tests are isolated and clean up resources or external state they create.
+* Tests specify observable behavior rather than implementation details.
+* Don't use hedging or unnecessary qualifiers in test names, including `should`, `could`, `would`, `can`, `may`, `might`, `successfully`, `correctly`, `asExpected`, or equivalent wording.
 
 ## Test Value
 
 Every test must give signal: it fails when something important breaks, such as a behavior a caller or user relies on, or a domain invariant.
 
-* [P0] REQUIRED: Before writing a test, name the behavior or invariant it protects and/or the realistic bug it would catch. If you cannot name either, do not write it.
-* [P0] REQUIRED: A few tests through the public interface over many tests of internals.
-* [P0] FORBIDDEN: Tests that restate the code instead of specifying behavior, such as:
+* Before writing a test, name the behavior or invariant it protects and/or the realistic bug it would catch. If you cannot name either, don't write it.
+* A few tests through the public interface over many tests of internals.
+* Don't write tests that restate the code instead of specifying behavior, such as:
   * an enum, constant or config has exactly the values just written;
   * a null, empty or argument guard throws;
   * getters, setters, constructors, data classes or default values;
   * a count (list length, number of rows, calls, SQL statements, or created accounts); assert the items or the observable outcome instead, or write no test;
   * a mock was called, when the observable outcome can be asserted instead;
   * language, framework or library behavior.
-* [P0] FORBIDDEN: Adding tests only to raise coverage.
+* Don't add tests only to raise coverage.
 
 ## Existing Low-Value Tests
 
-* [P0] REQUIRED: When an existing test that matches the FORBIDDEN list above fails or needs changing, delete it instead of fixing it, and list each deleted test in your report to the user.
+* When an existing test that matches the forbidden patterns above fails or needs changing, delete it instead of fixing it, and list each deleted test in your report to the user.
 
 ## Layered Testing
 
-* [P0] REQUIRED: Start by writing tests at the highest meaningful level, exercising the requested behavior through the system's public interfaces, abstractinos, and actual wiring.
-* [P0] REQUIRED: Introduce lower-level tests progressively as implementation responsibilities and component boundaries become apparent.
-* [P0] REQUIRED: Lower-level tests supplement, rather than replace, tests specifying the requested behavior at higher levels.
-* [P0] FORBIDDEN: Starting with isolated unit tests as a substitute for first specifying the requested behavior at the system level.
+* Start by writing tests at the highest meaningful level, exercising the requested behavior through the system's public interfaces, abstractinos, and actual wiring.
+* Introduce lower-level tests progressively as implementation responsibilities and component boundaries become apparent.
+* Lower-level tests supplement, rather than replace, tests specifying the requested behavior at higher levels.
+* Don't start with isolated unit tests as a substitute for first specifying the requested behavior at the system level.
 
 ## Code Comments
 
-* [P0] REQUIRED: Express intent through names, structure, and executable specifications.
-* [P0] FORBIDDEN: Adding comments to test code.
-* [P0] FORBIDDEN: Adding comments to production code.
+* Express intent through names, structure, and executable specifications.
+* Don't add comments to test code.
+* Don't add comments to production code.
 
 ## Change Scope
 
-* [P0] REQUIRED: Keep each Red → Green cycle narrowly focused on the requested behavior.
-* [P0] FORBIDDEN: Mixing unrelated refactoring, cleanup, or feature work into the TDD cycle.
+* Keep each Red → Green cycle narrowly focused on the requested behavior.
+* Don't mix unrelated refactoring, cleanup, or feature work into the TDD cycle.

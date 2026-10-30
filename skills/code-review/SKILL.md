@@ -33,51 +33,51 @@ Before starting, update your TODOs using the exact format below:
 
 Gather enough context to understand the system surrounding the change, by inspecting:
 
-- [P0] REQUIRED: Repository's `AGENTS.md`, `README.md`, and other .md files
-- [P0] REQUIRED: Complete diff
-- [P0] REQUIRED: Every changed file
-- [P0] REQUIRED: Relevant tests and specs
-- [P1] PREFERRED: Commit message, PR description, issue, and linked docs
-- [P1] PREFERRED: Callers, consumers, and dependencies
+- Repository's `AGENTS.md`, `README.md`, and other .md files
+- Complete diff
+- Every changed file
+- Relevant tests and specs
+- Commit message, PR description, issue, and linked docs
+- Callers, consumers, and dependencies
 
 ## Intent
 
 Establish why the change exists and what behavior it is intended to introduce, modify, or preserve. What changed, what did not change, what must behavior remain unchanged, what evidence establishes the intended behavior.
 
-- [P0] REQUIRED: Use the strongest available evidence.
-- [P0] REQUIRED: Distinguish stated intent from inferred intent.
-- [P1] PREFERRED: Trace intent to issue, requirement, specification, and/or test.
+- Use the strongest available evidence.
+- Distinguish stated intent from inferred intent.
+- Trace intent to issue, requirement, specification, and/or test.
 
 ## Placement
 
 Establish whether the change belongs in the current repository, service, module, layer, and ownership boundary.
 
-- [P0] REQUIRED: Establish the responsible component.
-- [P0] REQUIRED: Check the dependency direction.
-- [P0] REQUIRED: Check the abstraction boundary.
+- Establish the responsible component.
+- Check the dependency direction.
+- Check the abstraction boundary.
 
 ## Change
 
 Inspect the complete change and the system directly affected by it, such as:
 
-- [P0] REQUIRED: Establish the purpose of every 
+- Establish the purpose of every 
 
 ## Review
 
 Review the implementation against applicable rules and expected behavior.
 
-- [P0] REQUIRED: Check architectural constraints, behavioral contracts, correctness, failure paths, boundary conditions, state transitions, and regressions.
-- [P0] FORBIDDEN: Approving a change solely because "it works".
-- [P0] FORBIDDEN: Reporting personal preferences as defects.
-- [P0] FORBIDDEN: Reporting hypothetical problems without evidence.
+- Check architectural constraints, behavioral contracts, correctness, failure paths, boundary conditions, state transitions, and regressions.
+- Don't approve a change solely because "it works".
+- Don't report personal preferences as defects.
+- Don't report hypothetical problems without evidence.
 
 ## Findings
 
 Record only material issues caused or exposed by the change.
 
-- [P0] REQUIRED: Unvalidated failure claims and/or findings without stated impact are reported back to the user.
-- [P0] REQUIRED: A finding that claims broken behavior is validated by running the failing scenario first.
-- [P0] REQUIRED: Severity follows from demonstrated impact: state which contract breaks and who is affected.
+- Unvalidated failure claims and/or findings without stated impact are reported back to the user.
+- A finding that claims broken behavior is validated by running the failing scenario first.
+- Severity follows from demonstrated impact: state which contract breaks and who is affected.
 
 Each finding MUST use this exact format:
 

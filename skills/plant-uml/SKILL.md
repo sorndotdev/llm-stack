@@ -13,8 +13,8 @@ description: "Use this skill whenever you're generating with PlantUML diagrams"
 
 ## Evidence
 
-* [P0] REQUIRED: A diagram documenting an existing system is evidence: every element (type, field, relation, state, transition) traces to the artifact it documents or is marked as proposed.
-* [P1] REQUIRED: Before drawing elements from an existing codebase or schema, verify the names against source with a search; never draw from memory.
+* A diagram documenting an existing system is evidence: every element (type, field, relation, state, transition) traces to the artifact it documents or is marked as proposed.
+* Before drawing elements from an existing codebase or schema, verify the names against source with a search; never draw from memory.
 
 ## Syntax Rules
 
