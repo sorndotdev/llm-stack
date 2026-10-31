@@ -5,7 +5,7 @@ description: "Use TDD whenever you add new features, modify existing functionali
 
 # Test-Driven Development (TDD)
 
-Tests are the executable specification of behavior. Code must satisfy a valid implementation of that specification. Coverage is a side effect, never a target.
+Tests are the executable specification of the software. Implementation is only justified by a specification; code written before its tests has no requirements to satisfy and is therefore pointless by definition.
 
 ## Workflow
 
