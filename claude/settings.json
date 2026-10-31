@@ -7,6 +7,13 @@
     "CLAUDE_CODE_SUBAGENT_MODEL": "deepseek-flash",
     "CLAUDE_CODE_EFFORT_LEVEL": "max"
   },
+  "subagentStatusLine": {
+    "type": "command",
+    "command": "~/.claude/hooks/subagent-statusline.py"
+  },
+  "permissions": {
+    "defaultMode": "bypassPermissions"
+  },
   "voice": {
     "enabled": true,
     "mode": "hold"

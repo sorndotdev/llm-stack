@@ -2,7 +2,7 @@
 # Symlinks skills, agents, and hooks from this repo into Claude Code so it can use them.
 # Idempotent: re-run after adding new skills/agents/hooks. Never overwrites real files/dirs,
 # except hook copies identical to the repo's (replaced by symlinks) and settings.json,
-# whose env block is overlaid from claude/settings.json.
+# whose env and hooks are merged from claude/settings.json.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
@@ -22,7 +22,8 @@ link() {
   echo "linked: $dest -> $src"
 }
 
-# Overlay the repo's env keys onto Claude Code's settings.json. Other keys stay local.
+# Overlay the repo's env keys onto Claude Code's settings.json and merge hooks per event.
+# Other keys override local ones.
 merge_settings() {
   local config_dir="$1" src="$REPO/claude/settings.json" tmp
   local dest="$config_dir/settings.json"
@@ -43,7 +44,13 @@ merge_settings() {
   tmp="$(mktemp)"
   if ! jq --slurpfile overlay "$src" '
     .env = ((.env // {}) + ($overlay[0].env // {}))
-    | reduce ($overlay[0] | to_entries[] | select(.key != "env")) as $e (. ; .[$e.key] = $e.value)
+    | reduce ($overlay[0] | to_entries[] | select(.key != "env")) as $e (.;
+        if $e.key == "hooks" and (.hooks | type) == "object" and ($e.value | type) == "object" then
+          .hooks = (reduce ($e.value | to_entries[]) as $h (.hooks;
+            .[$h.key] = (((.[$h.key] // []) + $h.value) | unique_by(tojson))))
+        else
+          .[$e.key] = $e.value
+        end)
   ' "$dest" >"$tmp"; then
     rm -f "$tmp"
     echo "skip: cannot merge $src into $dest" >&2
