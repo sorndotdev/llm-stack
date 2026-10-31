@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
-"""Subagent status line: show each agent row as '[<model>] <description>'.
+"""Subagent status line: show each agent row as '[<agentType>][<model>] <description>'.
 
 Reads the subagentStatusLine JSON on stdin and prints one {"id", "content"} line per
-task. A tier model name (opus, sonnet, haiku) resolves through its
-ANTHROPIC_DEFAULT_<TIER>_MODEL env var. A task without a model falls back to
-CLAUDE_CODE_SUBAGENT_MODEL, then ANTHROPIC_MODEL. When no model can be determined the
-row is the bare description. Rows are truncated to the "columns" width with an
-ellipsis.
+task. The task's agentType is shown first and is omitted when empty. A tier model name
+(opus, sonnet, haiku) resolves through its ANTHROPIC_DEFAULT_<TIER>_MODEL env var. A
+task without a model falls back to CLAUDE_CODE_SUBAGENT_MODEL, then ANTHROPIC_MODEL.
+When no model can be determined the model bracket is omitted, and when neither an agent
+type nor a model can be determined the row is the bare description. Rows are truncated
+to the "columns" width with an ellipsis.
 """
 import json, os, re, sys
 
@@ -47,8 +48,10 @@ data = json.load(sys.stdin)
 columns = data.get("columns")
 for task in data.get("tasks", []):
     text = task.get("description") or task.get("label") or ""
+    agent_type = task.get("agentType") or ""
     model = task_model(task)
-    content = f"[{model}] {text}" if model else text
+    prefix = "".join(f"[{part}]" for part in (agent_type, model) if part)
+    content = f"{prefix} {text}" if prefix else text
     if isinstance(columns, int) and columns > 1 and len(content) > columns:
         content = content[: columns - 1] + "…"
     print(json.dumps({"id": task["id"], "content": content}))
