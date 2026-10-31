@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-# Symlinks skills and agents from this repo into Claude Code and OpenCode so they can use them.
-# Hooks go to Claude Code only.
+# Symlinks skills, agents, and hooks from this repo into Claude Code so it can use them.
 # Idempotent: re-run after adding new skills/agents/hooks. Never overwrites real files/dirs,
 # except hook copies identical to the repo's (replaced by symlinks) and settings.json,
 # whose env block is overlaid from claude/settings.json.
@@ -8,7 +7,6 @@ set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
 CLAUDE_DIR="${CLAUDE_CONFIG_DIR:-$HOME/.claude}"
-OPENCODE_DIR="$HOME/.config/opencode"
 
 link() {
   local src="$1" dest="$2" err
@@ -26,7 +24,8 @@ link() {
 
 # Overlay the repo's env keys onto Claude Code's settings.json. Other keys stay local.
 merge_settings() {
-  local config_dir="$1" src="$REPO/claude/settings.json" dest="$config_dir/settings.json" tmp
+  local config_dir="$1" src="$REPO/claude/settings.json" tmp
+  local dest="$config_dir/settings.json"
 
   [ -f "$src" ] || return 0
 
@@ -59,44 +58,41 @@ merge_settings() {
 }
 
 install_into() {
-  local config_dir="$1" skill agent hook
+  local skill agent hook
 
-  mkdir -p "$config_dir/skills" "$config_dir/agents"
+  mkdir -p "$CLAUDE_DIR/skills" "$CLAUDE_DIR/agents"
 
   for skill in "$REPO"/skills/*/; do
     skill="${skill%/}"
-    link "$skill" "$config_dir/skills/$(basename "$skill")"
+    link "$skill" "$CLAUDE_DIR/skills/$(basename "$skill")"
   done
 
   for agent in "$REPO"/agents/*.md; do
-    # Claude Code reads main-session instructions from CLAUDE.md; OpenCode reads them as an agent.
-    if [ "$(basename "$agent")" = global.md ] && [ "$config_dir" = "$CLAUDE_DIR" ]; then
-      link "$agent" "$config_dir/CLAUDE.md"
+    # Claude Code reads main-session instructions from CLAUDE.md.
+    if [ "$(basename "$agent")" = global.md ]; then
+      link "$agent" "$CLAUDE_DIR/CLAUDE.md"
     else
-      link "$agent" "$config_dir/agents/$(basename "$agent")"
+      link "$agent" "$CLAUDE_DIR/agents/$(basename "$agent")"
     fi
   done
 
-  # Settings and hooks are Claude Code only.
-  if [ "$config_dir" = "$CLAUDE_DIR" ]; then
-    merge_settings "$config_dir"
-    mkdir -p "$config_dir/hooks"
-    for hook in "$REPO"/hooks/*; do
-      # Replace a real copy identical to the repo's so it becomes a symlink; a differing one stays.
-      if [ -f "$config_dir/hooks/$(basename "$hook")" ] && [ ! -L "$config_dir/hooks/$(basename "$hook")" ] \
-        && cmp -s "$hook" "$config_dir/hooks/$(basename "$hook")"; then
-        rm "$config_dir/hooks/$(basename "$hook")"
-      fi
-      link "$hook" "$config_dir/hooks/$(basename "$hook")"
-    done
-  fi
+  merge_settings "$CLAUDE_DIR"
+  mkdir -p "$CLAUDE_DIR/hooks"
+  for hook in "$REPO"/hooks/*; do
+    # Replace a real copy identical to the repo's so it becomes a symlink; a differing one stays.
+    if [ -f "$CLAUDE_DIR/hooks/$(basename "$hook")" ] && [ ! -L "$CLAUDE_DIR/hooks/$(basename "$hook")" ] \
+      && cmp -s "$hook" "$CLAUDE_DIR/hooks/$(basename "$hook")"; then
+      rm "$CLAUDE_DIR/hooks/$(basename "$hook")"
+    fi
+    link "$hook" "$CLAUDE_DIR/hooks/$(basename "$hook")"
+  done
 }
 
 clean_stale() {
-  local config_dir="$1" dest
+  local dest
 
   # Remove dangling symlinks that point back into this repo (deleted/renamed items)
-  for dest in "$config_dir"/skills/* "$config_dir"/agents/* "$config_dir"/hooks/*; do
+  for dest in "$CLAUDE_DIR"/skills/* "$CLAUDE_DIR"/agents/* "$CLAUDE_DIR"/hooks/*; do
     if [ -L "$dest" ] && [ ! -e "$dest" ] && [[ "$(readlink "$dest")" == "$REPO"/* ]]; then
       rm "$dest"
       echo "removed stale: $dest"
@@ -104,7 +100,5 @@ clean_stale() {
   done
 }
 
-for config_dir in "$CLAUDE_DIR" "$OPENCODE_DIR"; do
-  install_into "$config_dir"
-  clean_stale "$config_dir"
-done
+install_into
+clean_stale
