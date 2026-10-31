@@ -1,0 +1,14 @@
+{
+  "env": {
+    "ANTHROPIC_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro[1m]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-flash[1m]",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-flash",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "deepseek-flash",
+    "CLAUDE_CODE_EFFORT_LEVEL": "max"
+  },
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
+  }
+}

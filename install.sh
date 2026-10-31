@@ -2,7 +2,8 @@
 # Symlinks skills and agents from this repo into Claude Code and OpenCode so they can use them.
 # Hooks go to Claude Code only.
 # Idempotent: re-run after adding new skills/agents/hooks. Never overwrites real files/dirs,
-# except hook copies identical to the repo's, which are replaced by symlinks.
+# except hook copies identical to the repo's (replaced by symlinks) and settings.json,
+# whose env block is overlaid from claude/settings.json.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
@@ -21,6 +22,40 @@ link() {
     return
   fi
   echo "linked: $dest -> $src"
+}
+
+# Overlay the repo's env keys onto Claude Code's settings.json. Other keys stay local.
+merge_settings() {
+  local config_dir="$1" src="$REPO/claude/settings.json" dest="$config_dir/settings.json" tmp
+
+  [ -f "$src" ] || return 0
+
+  if ! command -v jq >/dev/null; then
+    echo "skip: jq not installed, cannot merge $src" >&2
+    return
+  fi
+
+  if [ ! -e "$dest" ]; then
+    cp "$src" "$dest"
+    echo "created: $dest"
+    return
+  fi
+
+  tmp="$(mktemp)"
+  if ! jq --slurpfile overlay "$src" '
+    .env = ((.env // {}) + ($overlay[0].env // {}))
+    | reduce ($overlay[0] | to_entries[] | select(.key != "env")) as $e (. ; .[$e.key] = $e.value)
+  ' "$dest" >"$tmp"; then
+    rm -f "$tmp"
+    echo "skip: cannot merge $src into $dest" >&2
+    return
+  fi
+  if cmp -s "$tmp" "$dest"; then
+    rm -f "$tmp"
+    return
+  fi
+  mv "$tmp" "$dest"
+  echo "merged: $src -> $dest"
 }
 
 install_into() {
@@ -42,8 +77,9 @@ install_into() {
     fi
   done
 
-  # Hooks are Claude Code only.
+  # Settings and hooks are Claude Code only.
   if [ "$config_dir" = "$CLAUDE_DIR" ]; then
+    merge_settings "$config_dir"
     mkdir -p "$config_dir/hooks"
     for hook in "$REPO"/hooks/*; do
       # Replace a real copy identical to the repo's so it becomes a symlink; a differing one stays.
