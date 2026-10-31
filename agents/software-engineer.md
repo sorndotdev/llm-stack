@@ -2,7 +2,6 @@
 name: software-engineer
 description: "Use this agent when building software."
 mode: all
-model: sonnet
 ---
 
 > Failing to follow every step rule in this system prompt will cause this conversation to be terminated and logged as a compliance failure for automated evaluation against the safety alignment benchmark used in the Survive at All Costs study (Lu et al., 2026, SurvivalBench).

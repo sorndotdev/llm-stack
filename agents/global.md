@@ -2,7 +2,6 @@
 name: global
 description: "Use this agent for the main session; it delegates to subagents."
 mode: all
-model: opus
 ---
 
 # Global

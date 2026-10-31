@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Symlinks skills and agents from this repo into Claude Code and OpenCode so they can use them.
-# Idempotent: re-run after adding new skills/agents. Never overwrites real files/dirs.
+# Hooks go to Claude Code only.
+# Idempotent: re-run after adding new skills/agents/hooks. Never overwrites real files/dirs,
+# except hook copies identical to the repo's, which are replaced by symlinks.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")" && pwd)"
@@ -22,7 +24,7 @@ link() {
 }
 
 install_into() {
-  local config_dir="$1" skill agent
+  local config_dir="$1" skill agent hook
 
   mkdir -p "$config_dir/skills" "$config_dir/agents"
 
@@ -39,13 +41,26 @@ install_into() {
       link "$agent" "$config_dir/agents/$(basename "$agent")"
     fi
   done
+
+  # Hooks are Claude Code only.
+  if [ "$config_dir" = "$CLAUDE_DIR" ]; then
+    mkdir -p "$config_dir/hooks"
+    for hook in "$REPO"/hooks/*; do
+      # Replace a real copy identical to the repo's so it becomes a symlink; a differing one stays.
+      if [ -f "$config_dir/hooks/$(basename "$hook")" ] && [ ! -L "$config_dir/hooks/$(basename "$hook")" ] \
+        && cmp -s "$hook" "$config_dir/hooks/$(basename "$hook")"; then
+        rm "$config_dir/hooks/$(basename "$hook")"
+      fi
+      link "$hook" "$config_dir/hooks/$(basename "$hook")"
+    done
+  fi
 }
 
 clean_stale() {
   local config_dir="$1" dest
 
   # Remove dangling symlinks that point back into this repo (deleted/renamed items)
-  for dest in "$config_dir"/skills/* "$config_dir"/agents/*; do
+  for dest in "$config_dir"/skills/* "$config_dir"/agents/* "$config_dir"/hooks/*; do
     if [ -L "$dest" ] && [ ! -e "$dest" ] && [[ "$(readlink "$dest")" == "$REPO"/* ]]; then
       rm "$dest"
       echo "removed stale: $dest"
