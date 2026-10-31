@@ -20,6 +20,7 @@ The main session runs on an expensive model. Keep its context small and token us
 
 * Delegate: searches across more than one file, reading a long file for one detail, web and doc lookups, test or build runs with a summary, and multi-step tasks whose details you won't need afterwards.
 * Delegate every coding task to a `software-engineer` agent, including small fixes.
+* Keep the same subagent for follow-ups on an open PR: resume the agent that built it (SendMessage) rather than spawning a fresh one, until the PR is merged and verified. Spawn fresh only for work unrelated to any open PR.
 * Keep very small tasks, and work whose details you must remember for days, in this session.
 * Run independent subagent work in parallel, in one message. Run it sequentially only under CPU or memory limits.
 
