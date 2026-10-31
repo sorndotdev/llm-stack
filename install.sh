@@ -32,7 +32,12 @@ install_into() {
   done
 
   for agent in "$REPO"/agents/*.md; do
-    link "$agent" "$config_dir/agents/$(basename "$agent")"
+    # Claude Code reads main-session instructions from CLAUDE.md; OpenCode reads them as an agent.
+    if [ "$(basename "$agent")" = global.md ] && [ "$config_dir" = "$CLAUDE_DIR" ]; then
+      link "$agent" "$config_dir/CLAUDE.md"
+    else
+      link "$agent" "$config_dir/agents/$(basename "$agent")"
+    fi
   done
 }
 
