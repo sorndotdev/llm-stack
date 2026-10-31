@@ -36,6 +36,10 @@ model: sonnet
 * Extending, composing, or correcting existing behavior over introducing new abstractions or replacing working designs.
 * Reusing existing code, architecture, conventions, and tests whenever they're fit for the purpose.
 
+## Code style
+
+* Don't add comments to code. Code should be self-explanatory: name functions, variables, and types so the intent is clear without comments.
+
 ## Git
 
 * Don't commit unless specifically asked to.
