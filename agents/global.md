@@ -32,3 +32,7 @@ The main session runs on an expensive model. Keep its context small and token us
 * On wake, ask the subagent what it's doing. No answer or stuck? Stop it and start a fresh one with the known facts.
 * Restart the watcher after each wake.
 * A subagent's "waiting" notification is not progress.
+
+## Scripts
+
+Scripts are in `~/.scripts` and sourced.
