@@ -1,46 +1,42 @@
 ---
 name: software-design
-description: "Use the ideas in this skill to guide greenfield software projects."
+description: "Use when designing a greenfield software project or deciding whether a new feature strengthens or harms the existing system."
 ---
 
-# The Enduring Properties of Quality Software: Why It Has Survived for Decades
+# Software Design
 
-> 💡 **Key idea:** Durable systems don't win by having the most features. They win by making each new feature reinforce the existing ones.
+Durable systems win by reinforcement, not accumulation. Each new feature must strengthen the features already present. That is the general concept to internalize. The properties and mechanisms below are examples of it, not the complete list.
 
-Spreadsheets have been one of the most durable software products in existence for decades—not because they offer the most features, but because they combine a specific set of properties that reinforce one another. This synergy is what makes a system more than just the sum of its parts. Understanding these properties is the key to building systems that compound rather than decay. This skill teaches you _some_ of the properties and mechanisms that make them possible, but you should come out having learned the general concept.
+## The Four Properties
 
-## Creating Synergy: The Four Properties
+The properties spell CODE.
 
-I've broken synergy down into four main properties. Whenever you're considering a new feature, try scoring it from 1-10 on each property. If its average score is below a threshold, say 7, there's a good chance the feature is doing the product more harm than good.
+- **Composability:** parts combine to create new capabilities.
+- **Orthogonality:** a change in one area has no unexpected effects in another.
+- **Discoverability:** users find and understand capabilities naturally.
+- **Extensibility:** the system grows without breaking its foundation.
 
-- **Composability:** parts can be combined to create new capabilities.
-- **Orthogonality:** changes in one area do not create unexpected effects in another area.
-- **Discoverability:** users can naturally find and understand the system's capabilities.
-- **Extensibility:** the system can grow and adapt to new needs without breaking its foundation.
+No single property is enough. Combined, they create synergy. The system becomes more than the sum of its parts. Spreadsheets have shipped since VisiCalc in 1979 and combine all four:
 
-> 💡 **Acronym:** The four properties spell CODE, a useful checklist for building durable systems.
-
-More important than any individual property is their combination, which creates synergy. Spreadsheet software exhibits all of them:
-
-- **Composability:** Formulas return values that can be consumed by other cells and formulas, allowing simple operations to be composed into complex models.
-- **Orthogonality:** Changing a cell's formatting doesn't change its value, and editing a formula doesn't affect how the spreadsheet is displayed. Each concern can evolve independently.
-- **Discoverability:** The entire model is visible and directly manipulable. Users can inspect formulas, trace dependencies, and discover capabilities naturally as they explore the sheet.
-- **Extensibility:** Custom functions, macros, add-ins and plugins, scripts, and external data connections allow spreadsheets to evolve without changing the core model.
+- **Composability:** formulas return values that other cells and formulas consume. Simple operations compose into complex models.
+- **Orthogonality:** changing a cell's formatting does not change its value. Editing a formula does not change how the sheet displays.
+- **Discoverability:** the whole model is visible and directly manipulable. Users inspect formulas and trace dependencies as they explore.
+- **Extensibility:** custom functions, macros, plugins, scripts, and external data connections extend the sheet without changing the core model.
 
 ## Mechanisms
 
-The properties describe what a durable system looks like. Mechanisms describe how those properties emerge. Here are some of the most important ones—there are more:
+Properties describe what a durable system looks like. Mechanisms describe how the properties emerge. Some of the most important ones. There are more.
 
-- **Closure:** do your outputs become valid inputs for further operations? Example chain: *input → output → input → output → ...*
-- **Primitives:** are your system's capabilities exposed as small building blocks? Example: `lookup`, `aggregate`, `filter` rather than `financial report builder`.
-- **Uniform representation:** is your system's information represented in the same way? Example: every spreadsheet value lives in a cell, every Unix resource is a file, ...
-- **Pure methods:** do your components depend only on their inputs rather than mutating shared state? Example: `calculateTotal(items)` returns a value rather than updating a global shopping cart.
-- **Polymorphism:** do your components operate on abstractions rather than concrete implementations? Example: `draw(shape)` rather than `draw(rectangle)`, `draw(circle)`, ...
-- **Encapsulation:** can your components change internally without affecting their users? Example: changing a database implementation without changing the API.
-- **HCI / direct manipulation:** do users interact with the underlying model directly and immediately see the results? Example: selecting, dragging, editing, and inspecting the objects themselves.
-- **Extension points:** does your system provide stable places where new behavior can be added without modifying existing functionality? Example: plugins, hooks, events, and scripting.
+- **Closure:** can outputs become valid inputs for further operations? Example chain: input → output → input → output.
+- **Primitives:** are capabilities exposed as small building blocks? Example: `lookup`, `aggregate`, `filter` rather than `financial report builder`.
+- **Uniform representation:** is information represented the same way everywhere? Example: every spreadsheet value lives in a cell, every Unix resource is a file.
+- **Pure methods:** do components depend only on their inputs rather than mutating shared state? Example: `calculateTotal(items)` returns a value rather than updating a global cart.
+- **Polymorphism:** do components operate on abstractions rather than concrete implementations? Example: `draw(shape)` rather than `draw(rectangle)`, `draw(circle)`.
+- **Encapsulation:** can components change internally without affecting their users? Example: changing a database implementation without changing the API.
+- **Direct manipulation (HCI):** do users interact with the underlying model directly and see results immediately? Example: selecting, dragging, editing, and inspecting the objects themselves.
+- **Extension points:** does the system provide stable places to add behavior without modifying existing functionality? Example: plugins, hooks, events, and scripting.
 
-| Property | Mechanisms that enable it |
+| Property | Enabling mechanisms |
 | --- | --- |
 | Composability | closure, primitives, uniform representation, polymorphism |
 | Orthogonality | pure methods, encapsulation, polymorphism |
@@ -49,26 +45,30 @@ The properties describe what a durable system looks like. Mechanisms describe ho
 
 ## Compounding Systems
 
-Features are not assets by themselves. They become assets only when they strengthen the capabilities already present. Durable products don't grow by accumulating features—they grow by increasing the number of meaningful interactions between features. That's why the most enduring systems often look surprisingly small: their power comes from reinforcement, not addition.
+Features are not assets by themselves. They become assets only when they strengthen the capabilities already present. Durable products grow by increasing the meaningful interactions between features, not by accumulating features. The most enduring systems look surprisingly small. Their power comes from reinforcement, not addition.
+
+- **Power users:** macros and shortcuts accelerate experts without adding features beginners must learn. One set of primitives serves both.
 
 ### Centers and Living Structure
 
-The deepest formulation of this idea comes from architect Christopher Alexander, in his 1996 talk *Patterns in Architecture* at the ACM OOPSLA conference.
+Christopher Alexander formulated this in his 1996 talk [*Patterns in Architecture*](https://www.youtube.com/watch?v=98LdFA-_zfA) at ACM OOPSLA.
 
-Alexander's concept of **centers** in living structures shows how elements gain strength only through mutual reinforcement: each center makes others more coherent, much as spreadsheet cells and formulas do. This is the same principle behind the CODE properties: composability, orthogonality, discoverability, and extensibility are precisely what let each new feature intensify the centers already present—a feature is only as durable as the centers it intensifies. Centers gain life only through recursive mutual intensification; each must strengthen the others.
+A **center** gains strength only through mutual reinforcement with other centers. Each center makes the others more coherent, as spreadsheet cells and formulas do. The CODE properties let each new feature intensify the centers already present. A feature is only as durable as the centers it intensifies.
 
-Alexander's idea, applied to building software:
+Applied to software:
 
-> Build software by observing reality, then make the smallest change that strengthens the current whole.
+> Observe reality. Then make the smallest change that strengthens the current whole.
 >
-> **Not:** "What's the next feature?"
+> Not: "What's the next feature?"
 >
-> **But:** "What did reality reveal, and what's the smallest strengthening transformation?"
+> But: "What did reality reveal? What is the smallest strengthening transformation?"
 
 ### Reflexivity
 
-Reflexivity is built into the recursion of centers. Each structure-preserving step feeds the intensified whole back into observation, so the system—and its maker—continually disclose new weak centers from within. The process is self-referential by nature: living software does not merely accumulate; it regenerates its own coherence through that closed loop of sensing and minimal transformation. The principle has a distinguished pedigree: George Soros built his investment philosophy on it in *The Alchemy of Finance*, arguing that participants' biased perceptions shape the very situation they are perceiving, which in turn reshapes those perceptions.
+Reflexivity is built into the recursion of centers. Each structure-preserving step feeds the intensified whole back into observation. The system and its maker keep disclosing new weak centers from within. Living software regenerates its coherence through that closed loop of sensing and minimal transformation.
+
+George Soros built his investment philosophy on the same principle in [*The Alchemy of Finance*](https://en.wikipedia.org/wiki/The_Alchemy_of_Finance). He argued that participants' biased perceptions shape the situation they are perceiving, which in turn reshapes those perceptions.
 
 ### Homoiconicity
 
-Homoiconicity makes the program a field of centers. The term was coined by Douglas Hofstadter in *Gödel, Escher, Bach* for languages like Lisp, where code and data share one representation. Such a system can observe its own structure and apply the same minimal, structure-preserving transformations to itself. Reflexivity becomes operational: the software continually regenerates its coherence from within, turning every extension into living structure rather than bolted-on matter.
+Homoiconicity makes the program a field of centers. Douglas Hofstadter coined the term in [*Gödel, Escher, Bach*](https://en.wikipedia.org/wiki/G%C3%B6del,_Escher,_Bach) for languages like Lisp, where code and data share one representation. Such a system observes its own structure and applies the same minimal, structure-preserving transformations to itself. Reflexivity becomes operational. The software regenerates its coherence from within. Every extension becomes living structure, not bolted-on matter.
